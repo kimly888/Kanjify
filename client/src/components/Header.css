@@ -11,5 +11,15 @@ header {
 }
 
 .title {
+  font-size: 6rem;
+  padding: 2rem;
+}
+
+#name, button {
   font-size: 2rem;
 }
+
+button {
+  margin-top: 2rem;
+}
+

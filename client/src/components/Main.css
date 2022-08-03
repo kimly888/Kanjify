@@ -3,10 +3,14 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 h3 {
+  font-size: 1rem;
+}
+
+li {
   font-size: 1rem;
 }
 
@@ -27,6 +31,9 @@ h3 {
   border: 2px solid black;
 }
 
+
+
+
 .kanji-name {
   display: flex;
   padding: 10px;
@@ -41,6 +48,8 @@ h3 {
 .kanji {
   margin: 0.3rem 0;
 }
+
+
 
 
 .kanji-name-info {
