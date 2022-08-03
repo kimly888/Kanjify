@@ -1,0 +1,25 @@
+header {
+  width: 50%;
+  height: 100vh;
+  float: left;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(228, 228, 228);
+}
+
+.title {
+  font-size: 6rem;
+  padding: 2rem;
+}
+
+#name, button {
+  font-size: 2rem;
+}
+
+button {
+  margin-top: 2rem;
+}
+
