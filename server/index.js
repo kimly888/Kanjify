@@ -1,15 +1,18 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const axios = require("axios");
 
 app.use(express.json()); //req.body
 app.use(cors());
 
-app.get("/test", (req, res) => {
-  // res.json({"message": "OK"});
-  // res.status(200).send(JSON.stringify({"body": "OK"}));
-  res.status(200).send(JSON.stringify({message: "OK"}));;
-  console.log("aaaaaaaaaaaa");
+app.get("/api/getKanji", (req, res) => {
+
+})
+
+app.post("/api/kanji", (req, res) => {
+  const { kanji } = req.body;
+  console.log(req.body);
 })
 
 const PORT = process.env.PORT || 4000;
