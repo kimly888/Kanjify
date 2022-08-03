@@ -2,9 +2,10 @@ import React from "react";
 
 const Name = () => {
   return (
-    <div>
+    <form action="localhost:4000/api/getKanji" method="GET">
       <input type="text" name="name" id="name" />
-    </div>
+      <button type="submit">GO</button>
+    </form>
   );
 };
 
