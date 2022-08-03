@@ -11,7 +11,7 @@ h3 {
 }
 
 li {
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .main-container {
@@ -32,9 +32,6 @@ li {
   border: 2px solid black;
 }
 
-
-
-
 .kanji-name {
   display: flex;
   padding: 10px;
@@ -50,9 +47,6 @@ li {
   margin: 0.3rem 0;
 }
 
-
-
-
 .kanji-name-info {
   width: 100%;
   display: flex;
@@ -61,5 +55,11 @@ li {
 
 .kanji-character-breakdown {
   display: flex;
-  border: 1px solid black;
+  align-items: center;
+  border-top: 1px solid black;
 }
+
+.kanji-character {
+  padding: 1rem;
+}
+
