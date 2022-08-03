@@ -1,1 +1,1 @@
-# kanji-finds
+# Kanjify
