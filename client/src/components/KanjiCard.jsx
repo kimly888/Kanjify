@@ -1,4 +1,3 @@
-import React from "react";
 import "./KanjiCard.css";
 
 // Props to be passed: kanji, furigana, romaji, definition

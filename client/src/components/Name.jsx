@@ -1,5 +1,3 @@
-import React from "react";
-
 const Name = () => {
   return (
     <form action="localhost:4000/api/getKanji" method="GET">
