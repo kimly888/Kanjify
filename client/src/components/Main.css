@@ -7,10 +7,10 @@ h2 {
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
-li {
+p {
   font-size: 1.3rem;
 }
 
@@ -20,46 +20,6 @@ li {
   overflow: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-}
-
-.kanji-card {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2px solid black;
-}
-
-.kanji-name {
-  display: flex;
-  padding: 10px;
-}
-
-.kanji-character-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.kanji {
-  margin: 0.3rem 0;
-}
-
-.kanji-name-info {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.kanji-character-breakdown {
-  display: flex;
-  align-items: center;
-  border-top: 1px solid black;
-}
-
-.kanji-character {
-  padding: 1rem;
 }
 
