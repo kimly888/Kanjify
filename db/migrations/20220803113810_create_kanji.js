@@ -4,9 +4,12 @@
  */
 exports.up = function(knex) {
   return knex.schema
-  .createTable("users", function (table) {
+  .createTable("kanji", function (table) {
     table.increments("id").primary(); 
-    table.string("username", 12);
+    table.string("kanji", 20);
+    table.string("furigana", 20);
+    table.string("romaji", 20);
+    table.string("definition", 100);
   });
 };
 
@@ -15,6 +18,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.schema
-  .dropTableIfExists("users");
+  knex.schema.dropTableIfExists("kanji");
 };

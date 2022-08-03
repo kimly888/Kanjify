@@ -4,10 +4,10 @@
  */
 exports.up = function(knex) {
   return knex.schema
-  .createTable("users", function (table) {
-    table.increments("id").primary(); 
-    table.string("username", 12);
-  });
+  .alterTable("users", (table) => {
+    table.integer("kanji_id").unsigned();
+    table.foreign("kanji_id").references("kanji.id");
+  })
 };
 
 /**
@@ -16,5 +16,7 @@ exports.up = function(knex) {
  */
 exports.down = function(knex) {
   return knex.schema
-  .dropTableIfExists("users");
+  .alterTable("users", (table) => {
+    table.dropColumn('kanji_id')
+  });
 };
