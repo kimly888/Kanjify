@@ -6,12 +6,19 @@ const Main = () => {
     <section className="main-container">
       <article className="kanji-card">
         <div className="kanji-name">
-          <h3 className="furigana">きむ</h3>
-          <h1 className="kanji">輝夢</h1>
-          <h3 className="romaji">ki mu</h3>
+          <div className="kanji-character-wrapper">
+            <h3 className="furigana">き</h3>
+            <h1 className="kanji">輝</h1>
+            <h3 className="romaji">ki</h3>
+          </div>
+          <div className="kanji-character-wrapper">
+            <h3 className="furigana">む</h3>
+            <h1 className="kanji">夢</h1>
+            <h3 className="romaji">mu</h3>
+          </div>
         </div>
-        <div className="kanji-description">
-          <div className="kanji-breakdown">
+        <div className="kanji-name-info">
+          <div className="kanji-character-breakdown">
             <div className="kanji-character">
               <h2>輝</h2>
             </div>
@@ -21,7 +28,7 @@ const Main = () => {
               </ul>
             </div>
           </div>
-          <div className="kanji-breakdown">
+          <div className="kanji-character-breakdown">
             <div className="kanji-character">
               <h2>夢</h2>
             </div>
