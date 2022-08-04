@@ -1,11 +1,10 @@
-import fetch from "node-fetch";
-
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const wanakana = require('wanakana');
 const knex = require('./db/knex');
 const path = require('path');
+const fetch = require("node-fetch");
 
 app.use(express.json()); //req.body
 app.use(cors());
