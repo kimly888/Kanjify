@@ -23,27 +23,27 @@ app.get("/api/kanji/", async (req, res) => {
   const katakana = wanakana.toKatakana(romajiName);
   const katakanaAry = katakana.split('');
 
-  const kanjiData = await fetch("https://kanjialive-api.p.rapidapi.com/api/public/search/advanced/",{
-    method: 'GET',
-    params: {on: `${katakanaAry[0]}`},
-    headers: {
-      'X-RapidAPI-Key': 'fb204f9fc6msh5fe937040b3b47fp1ec3cfjsn0a6c2ab1a027',
-      'X-RapidAPI-Host': 'kanjialive-api.p.rapidapi.com'
-    }
-  });
+  // const kanjiData = await fetch("https://kanjialive-api.p.rapidapi.com/api/public/search/advanced/",{
+  //   method: 'GET',
+  //   params: {on: `${katakanaAry[0]}`},
+  //   headers: {
+  //     'X-RapidAPI-Key': 'fb204f9fc6msh5fe937040b3b47fp1ec3cfjsn0a6c2ab1a027',
+  //     'X-RapidAPI-Host': 'kanjialive-api.p.rapidapi.com'
+  //   }
+  // });
 
-  const kanji = await kanjiData.json();
-  const singleKanji = kanji[22].kanji.character;
+  // const kanji = await kanjiData.json();
+  // const singleKanji = kanji[22].kanji.character;
 
-  const kanjiDetailData = await fetch(`https://kanjialive-api.p.rapidapi.com/api/public/kanji/${singleKanji}`, {
-    headers: {
-      'X-RapidAPI-Key': 'fb204f9fc6msh5fe937040b3b47fp1ec3cfjsn0a6c2ab1a027',
-      'X-RapidAPI-Host': 'kanjialive-api.p.rapidapi.com'
-    }
-  })
+  // const kanjiDetailData = await fetch(`https://kanjialive-api.p.rapidapi.com/api/public/kanji/${singleKanji}`, {
+  //   headers: {
+  //     'X-RapidAPI-Key': 'fb204f9fc6msh5fe937040b3b47fp1ec3cfjsn0a6c2ab1a027',
+  //     'X-RapidAPI-Host': 'kanjialive-api.p.rapidapi.com'
+  //   }
+  // })
 
-  const kanjiDetailObj = await kanjiDetailData.json();
-  const meaning = kanjiDetailObj.kanji.meaning.english;
+  // const kanjiDetailObj = await kanjiDetailData.json();
+  // const meaning = kanjiDetailObj.kanji.meaning.english;
 
   // Sample Data to check if data can be sent to the front
   let resultObj = [
