@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-
 const wanakana = require('wanakana');
-
 const knex = require('../db/knex');
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use(express.json()); //req.body
 app.use(cors());
@@ -77,6 +78,10 @@ app.get("/api/kanji", async (req, res) => {
   res.send("test")
   
 })
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
