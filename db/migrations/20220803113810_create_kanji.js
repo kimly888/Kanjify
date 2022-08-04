@@ -9,7 +9,6 @@ exports.up = function(knex) {
     table.string("kanji", 20);
     table.string("furigana", 20);
     table.string("romaji", 20);
-    table.string("definition", 100);
   });
 };
 
