@@ -14,11 +14,9 @@ app.get("/api/getKanji", (req, res) => {
 app.get("/api/kanji", async (req, res) => {
   const kanji = req.body;
   console.log(kanji);
-  await knex("users").insert({username: "foo"})
-  // const selected = await knex.select().from("users");
-  // console.log(selected)
+  await knex("kanji").insert({kanji: "区理酢", furigana: "くりす", romaji: "kurisu", ""})
   res.send("test")
-  // const id = await database("users").insert(kanji, 'id');
+  
 })
 
 const PORT = process.env.PORT || 4000;
