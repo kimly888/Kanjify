@@ -6,7 +6,7 @@ const knex = require('./db/knex');
 const path = require('path');
 
 
-app.use(express.static(path.join("../client")));
+app.use(express.static("client"));
 
 app.use(express.json()); //req.body
 app.use(cors());
