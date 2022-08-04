@@ -6,7 +6,7 @@ const knex = require('./db/knex');
 const path = require('path');
 
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, "./client/src")));
 
 app.use(express.json()); //req.body
 app.use(cors());
@@ -81,7 +81,7 @@ app.get("/api/kanji", async (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  res.sendFile(path.join(__dirname, "./client/src"));
 });
 
 const PORT = process.env.PORT || 4000;
