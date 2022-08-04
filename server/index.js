@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const wanakana = require('wanakana');
+
 
 app.use(express.json()); //req.body
 app.use(cors());
@@ -12,9 +14,62 @@ app.get("/test", (req, res) => {
   console.log("aaaaaaaaaaaa");
 })
 
-app.post("/api/kanji", (req, res) => {
-  const { kanji } = req.body;
-  console.log(req.body);
+
+app.get("/api/kanji/", async (req, res) => {
+  let result = [];
+
+  const { input: romajiName } = req.query;
+  const hiragana = wanakana.toKana(romajiName);
+  const katakana = wanakana.toKatakana(romajiName);
+  const katakanaAry = katakana.split('');
+
+  const kanjiData = await fetch("https://kanjialive-api.p.rapidapi.com/api/public/search/advanced/",{
+    method: 'GET',
+    params: {on: `${katakanaAry[0]}`},
+    headers: {
+      'X-RapidAPI-Key': 'fb204f9fc6msh5fe937040b3b47fp1ec3cfjsn0a6c2ab1a027',
+      'X-RapidAPI-Host': 'kanjialive-api.p.rapidapi.com'
+    }
+  });
+
+  const kanji = await kanjiData.json();
+  const singleKanji = kanji[22].kanji.character;
+
+  const kanjiDetailData = await fetch(`https://kanjialive-api.p.rapidapi.com/api/public/kanji/${singleKanji}`, {
+    headers: {
+      'X-RapidAPI-Key': 'fb204f9fc6msh5fe937040b3b47fp1ec3cfjsn0a6c2ab1a027',
+      'X-RapidAPI-Host': 'kanjialive-api.p.rapidapi.com'
+    }
+  })
+
+  const kanjiDetailObj = await kanjiDetailData.json();
+  const meaning = kanjiDetailObj.kanji.meaning.english;
+
+  // Sample Data to check if data can be sent to the front
+  let resultObj = [
+    {
+      kanjiName: "区理酢",
+      eachKanji: [
+        {
+          kanji: "区",
+          hiragana: "く",
+          meanings: "district"
+        },
+        {
+          kanji: "理",
+          hiragana: "り",
+          meanings: "science"
+        },
+        {
+          kanji: "酢",
+          hiragana: "す",
+          meanings: "vinegar"
+        }
+      ]
+    }
+  ]
+  
+  res.status(200).send(JSON.stringify({resultObj}));;
 })
 
 const PORT = process.env.PORT || 4000;
