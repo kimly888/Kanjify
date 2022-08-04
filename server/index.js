@@ -1,19 +1,17 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+
 const wanakana = require('wanakana');
 
+const knex = require('../db/knex');
 
 app.use(express.json()); //req.body
 app.use(cors());
 
-app.get("/test", (req, res) => {
-  // res.json({"message": "OK"});
-  // res.status(200).send(JSON.stringify({"body": "OK"}));
-  res.status(200).send(JSON.stringify({message: "OK"}));;
-  console.log("aaaaaaaaaaaa");
-})
+app.get("/api/getKanji", (req, res) => {
 
+})
 
 app.get("/api/kanji/", async (req, res) => {
   let result = [];
@@ -70,6 +68,15 @@ app.get("/api/kanji/", async (req, res) => {
   ]
   
   res.status(200).send(JSON.stringify({resultObj}));;
+
+app.get("/api/kanji", async (req, res) => {
+  const kanji = req.body;
+  console.log(kanji);
+  await knex("users").insert({username: "foo"})
+  // const selected = await knex.select().from("users");
+  // console.log(selected)
+  res.send("test")
+  // const id = await database("users").insert(kanji, 'id');
 })
 
 const PORT = process.env.PORT || 4000;
