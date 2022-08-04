@@ -1,3 +1,13 @@
+form {
+  margin-top: 2rem;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#name, button {
+  font-size: 2rem;
+}
+
 #name {
   border: none;
   padding: 1rem 0;

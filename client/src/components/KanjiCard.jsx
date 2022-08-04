@@ -24,7 +24,7 @@ const KanjiCard = () => {
             <h2 className="kanji">輝</h2>
           </div>
           <div className="kanji-description">
-              <p>to shine; to glitter; to sparkle</p>
+              <p>: to shine; to glitter; to sparkle</p>
           </div>
         </div>
         <div className="kanji-character-breakdown">
