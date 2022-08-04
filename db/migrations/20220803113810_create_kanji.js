@@ -4,12 +4,11 @@
  */
 exports.up = function(knex) {
   return knex.schema
-  .createTable("users", function (table) {
+  .createTable("kanji", function (table) {
     table.increments("id").primary(); 
-    table.string("kanji", 64).notNullable();
-    table.string("furigana", 64).notNullable();
-    table.string("romaji", 64).notNullable(); 
-    // TODO: add `definition` column 
+    table.string("kanji", 20);
+    table.string("furigana", 20);
+    table.string("romaji", 20);
   });
 };
 
@@ -18,6 +17,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.schema
-  .dropTableIfExists("users");
+  knex.schema.dropTableIfExists("kanji");
 };
