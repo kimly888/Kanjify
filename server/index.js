@@ -67,12 +67,13 @@ app.get("/api/kanji/", async (req, res) => {
     }
   ]
   
-  res.status(200).send(JSON.stringify({resultObj}));;
-
+  res.status(200).send(JSON.stringify({resultObj}));
+})
+  
 app.get("/api/kanji", async (req, res) => {
   const kanji = req.body;
   console.log(kanji);
-  await knex("kanji").insert({kanji: "区理酢", furigana: "くりす", romaji: "kurisu", ""})
+  await knex("kanji").insert({kanji: "区理酢", furigana: "くりす", romaji: "kurisu"})
   res.send("test")
   
 })
