@@ -17,26 +17,19 @@ module.exports = {
       charset: 'utf8'
     },
     migrations: {
-      directory: "./db/migrations",
+      directory: "./migrations",
     },
     seeds: {
-      directory: "./db/seeds",
+      directory: "./seeds",
     }
   },
 
   production: {
-    client: 'postgresql',
+    client: "pg",
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      connectionString: process.env.DATABASE_URL,
     },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
+    migrations: { directory: "./migrations" },
+    seeds: { directory: "./seeds" },
   }
 };
