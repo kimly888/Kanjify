@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const wanakana = require('wanakana');
-const knex = require('../db/knex');
+const knex = require('./db/knex');
 const path = require('path');
 
 app.use(express.static(path.join(__dirname, 'client/build')));
