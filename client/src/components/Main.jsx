@@ -1,12 +1,17 @@
 import "./Main.css";
-import KanjiCard from './KanjiCard'
+import KanjiCard from "./KanjiCard";
 
-const Main = () => {
+const Main = ({ kanjiData }) => {
   return (
     <section className="main-container">
-      <KanjiCard />
-      <KanjiCard />
-      <KanjiCard />
+      {kanjiData.map((name) => {
+        return (
+          <KanjiCard
+            kanjiName={name.kanjiName}
+            eachKanjiData={name.eachKanji}
+          />
+        );
+      })}
     </section>
   );
 };
