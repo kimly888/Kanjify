@@ -1,0 +1,22 @@
+form {
+  margin-top: 2rem;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#name, button {
+  font-size: 2rem;
+}
+
+#name {
+  border: none;
+  padding: 1rem 0;
+  border-radius: 10px 0 0 10px;
+  text-align: center;
+}
+
+button {
+  border: none;
+  border-radius: 0 10px 10px 0;
+  padding: 1rem;
+}
