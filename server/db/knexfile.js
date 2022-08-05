@@ -6,7 +6,7 @@ module.exports = {
     client: "pg",
     connection: {
       database: "kanjify",
-      user:   "mutokurumi",
+      user:   "kanjifyuser",
       password: "kanjifydb"
     },
     migrations: { directory: "./migrations" },
