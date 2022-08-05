@@ -34,7 +34,7 @@ app.get("/api/kanji/", async (req, res) => {
     kanjiDefinitions
   );
 
-  res.send(kanjiData);
+  res.status(200).send(kanjiData);
 });
 
 // app.get("/api/kanjiDB", async (req, res) => {
