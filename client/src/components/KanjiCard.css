@@ -1,12 +1,13 @@
 .kanji-card {
   width: 30rem;
+  flex: 0 0;
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 50px;
   background: #f8f8f8;
   box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
-  margin: 2rem 0;
   padding: 2rem 0rem;
 }
 
