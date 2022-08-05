@@ -6,9 +6,7 @@ import Main from "./components/Main";
 const HOME_API = "http://localhost:4000/";
 
 function App() {
-  const [data, setData] = useState({});
-
-  const kanjiData = [
+  const testData = [
     {
       kanjiName: "区理酢",
       eachKanji: [
@@ -80,12 +78,21 @@ function App() {
       ],
     },
   ];
+  const [kanjiData, setKanjiData] = useState([]);
+  const [isActive, setIsActive] = useState(false);
 
   return (
-    <div className="App">
-      <Header />
-      <Main kanjiData={kanjiData} />
-    </div>
+    <body className="App">
+      <Header
+        isActive={isActive}
+        setIsActive={setIsActive}
+        setKanjiData={setKanjiData}
+      />
+      <Main
+        isActive={isActive}
+        kanjiData={kanjiData}
+      />
+    </body>
   );
 }
 
