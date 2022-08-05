@@ -28,6 +28,13 @@ app.get("/api/kanji/", async (req, res) => {
   const kanjiData = getKanjiData(hiraganaArr, kanjiNames, kanjiDefinitions);
 
   res.status(200).send(JSON.stringify({ kanjiData }));
+
+  // Insert data to database
+  for (let i = 0; i < kanjiData.length; i++) {
+    const kanjiName = kanjiData[i]["kanjiName"];
+    await knex("kanji").insert({kanji: kanjiName, furigana: hiragana, romaji: romajiName});
+  };
+
 });
 
 // app.get("/api/kanjiDB", async (req, res) => {
