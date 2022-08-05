@@ -70,6 +70,7 @@ async function getKanjiDefinitions(generatedKanjiObj) {
 
   for (const key in generatedKanjiObj) {
     const definitionArr = [];
+    
     for (const kanji of generatedKanjiObj[key]) {
       const kanjiResponseObj = await fetch(
         `https://kanjialive-api.p.rapidapi.com/api/public/kanji/${kanji}`,
@@ -85,7 +86,6 @@ async function getKanjiDefinitions(generatedKanjiObj) {
 
       // Get body of response from API which will be array of definition objects
       const kanjiObj = await kanjiResponseObj.json();
-      console.log(kanjiObj);
       // Get and store definition of each kanji object
       const definition = kanjiObj.error || kanjiObj.kanji.meaning.english;
       definitionArr.push(definition);
@@ -114,7 +114,7 @@ const combiner = (obj) => {
 };
 
 // Function to organize kanji character and definition values
-const getKanjiData = (hiraganaArr, kanjiObj, definitionObj) => {
+const getKanjiData = (hiraganaArr, romajiArr, kanjiObj, definitionObj) => {
   return Object.keys(kanjiObj).map((key) => {
     return {
       kanjiName: kanjiObj[key].join(""),
@@ -122,6 +122,7 @@ const getKanjiData = (hiraganaArr, kanjiObj, definitionObj) => {
         return {
           character: kanji,
           hiragana: hiraganaArr[index],
+          romaji: romajiArr[index],
           definition: definitionObj[key][index],
         };
       }),
@@ -165,13 +166,19 @@ app.get("/api/kanji/", async (req, res) => {
   const katakana = convertToBigKatakana(wanakana.toKatakana(romajiName));
   const hiraganaArr = hiragana.split("");
   const katakanaArr = katakana.split("");
+  const romajiArr = hiraganaArr.map((hiragana) => wanakana.toRomaji(hiragana));
 
   const generatedKanjiObj = await katakanaToKanji(katakanaArr);
   const generatedDefinitionObj = await getKanjiDefinitions(generatedKanjiObj);
 
   const kanjiNames = combiner(generatedKanjiObj);
   const kanjiDefinitions = combiner(generatedDefinitionObj);
-  const kanjiData = getKanjiData(hiraganaArr, kanjiNames, kanjiDefinitions);
+  const kanjiData = getKanjiData(
+    hiraganaArr,
+    romajiArr,
+    kanjiNames,
+    kanjiDefinitions
+  );
 
   // Insert data to database
   // for (let i = 0; i < kanjiData.length; i++) {
