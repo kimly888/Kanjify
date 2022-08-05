@@ -48,12 +48,14 @@ async function katakanaToKanji(katakanaArr) {
     // If kanjiTriplet isn't a triplet because there aren't enough kanji for a certain romaji, duplicate its elements until it's a triplet
     if (kanjiTriplet.length !== 3) {
       while (kanjiTriplet.length < 3) {
-        kanjiTriplet.push(kanjiTriplet[0]);
+        kanjiTriplet.push(kanjiTriplet[0] || katakana);
       }
     }
 
     const kanjiCharactersArr = kanjiTriplet.map((singleKanjiObj) => {
-      return singleKanjiObj.kanji.character;
+      return typeof singleKanjiObj === "object"
+        ? singleKanjiObj.kanji.character
+        : singleKanjiObj;
     });
 
     result[count++] = kanjiCharactersArr;
@@ -83,8 +85,9 @@ async function getKanjiDefinitions(generatedKanjiObj) {
 
       // Get body of response from API which will be array of definition objects
       const kanjiObj = await kanjiResponseObj.json();
+      console.log(kanjiObj);
       // Get and store definition of each kanji object
-      const definition = kanjiObj.kanji.meaning.english;
+      const definition = kanjiObj.error || kanjiObj.kanji.meaning.english;
       definitionArr.push(definition);
     }
 
