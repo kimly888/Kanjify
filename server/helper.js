@@ -96,7 +96,7 @@ const combiner = (obj) => {
 };
 
 // Function to organize kanji character and definition values
-const getKanjiData = (hiraganaArr, kanjiObj, definitionObj) => {
+const getKanjiData = (hiraganaArr, romajiArr, kanjiObj, definitionObj) => {
   return Object.keys(kanjiObj).map((key) => {
     return {
       kanjiName: kanjiObj[key].join(""),
@@ -104,6 +104,7 @@ const getKanjiData = (hiraganaArr, kanjiObj, definitionObj) => {
         return {
           character: kanji,
           hiragana: hiraganaArr[index],
+          romaji: romajiArr[index],
           definition: definitionObj[key][index],
         };
       }),

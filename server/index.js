@@ -20,12 +20,19 @@ app.get("/api/kanji/", async (req, res) => {
   const hiraganaArr = hiragana.split("");
   const katakanaArr = katakana.split("");
 
+  const romajiArr = hiraganaArr.map((hiragana) => wanakana.toRomaji(hiragana));
+
   const generatedKanjiObj = await katakanaToKanji(katakanaArr);
   const generatedDefinitionObj = await getKanjiDefinitions(generatedKanjiObj);
 
   const kanjiNames = combiner(generatedKanjiObj);
   const kanjiDefinitions = combiner(generatedDefinitionObj);
-  const kanjiData = getKanjiData(hiraganaArr, kanjiNames, kanjiDefinitions);
+  const kanjiData = getKanjiData(
+    hiraganaArr,
+    romajiArr,
+    kanjiNames,
+    kanjiDefinitions
+  );
 
   res.send(kanjiData);
 });
