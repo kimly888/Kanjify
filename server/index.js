@@ -8,6 +8,7 @@ const {
   getKanjiDefinitions,
   combiner,
   getKanjiData,
+  convertToBigKatakana,
 } = require("./helper.js");
 
 app.use(express.json()); //req.body
@@ -16,7 +17,7 @@ app.use(cors());
 app.get("/api/kanji/", async (req, res) => {
   const { input: romajiName } = req.query;
   const hiragana = wanakana.toKana(romajiName);
-  const katakana = wanakana.toKatakana(romajiName);
+  const katakana = convertToBigKatakana(wanakana.toKatakana(romajiName));
   const hiraganaArr = hiragana.split("");
   const katakanaArr = katakana.split("");
 
@@ -34,15 +35,14 @@ app.get("/api/kanji/", async (req, res) => {
     kanjiDefinitions
   );
 
+  // Insert data to database
+  for (let i = 0; i < kanjiData.length; i++) {
+    const kanjiName = kanjiData[i]["kanjiName"];
+    await knex("kanji").insert({kanji: kanjiName, furigana: hiragana, romaji: romajiName});
+  };
+
   res.status(200).send(kanjiData);
 });
-
-// app.get("/api/kanjiDB", async (req, res) => {
-//   const kanji = req.body;
-//   console.log(kanji);
-//   await knex("kanji").insert({kanji: "区理酢", furigana: "くりす", romaji: "kurisu"})
-//   res.send("test")
-// })
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

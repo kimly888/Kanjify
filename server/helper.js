@@ -1,3 +1,5 @@
+const fetch = require("node-fetch");
+
 function shuffle(arr) {
   const cloneArray = [...arr];
 
@@ -112,9 +114,27 @@ const getKanjiData = (hiraganaArr, romajiArr, kanjiObj, definitionObj) => {
   });
 };
 
+// Function to convert small katakana to big katakana when it includes
+const convertToBigKatakana = (katakana) => {
+  const smallKatakana = ["ァ", "ィ", "ゥ", "ェ", "ォ", "ヵ", "ヶ", "ッ", "ャ", "ュ", "ョ", "ヮ"];
+
+  for (let i=0; i < katakana.length; i++) {
+    for (let j=0; j < smallKatakana.length; j++){
+      if(katakana[i] === smallKatakana[j]) {
+        let uniCodePoint = katakana[i].codePointAt(0);
+        let changeToBigKatakana = String.fromCodePoint(uniCodePoint+1);
+        katakana = katakana.replace(katakana[i], changeToBigKatakana);
+      }
+    }
+  }
+  
+  return katakana;
+}
+
 module.exports = {
   katakanaToKanji,
   getKanjiDefinitions,
   combiner,
   getKanjiData,
+  convertToBigKatakana,
 };
