@@ -3,13 +3,6 @@ const app = express();
 const cors = require("cors");
 const wanakana = require("wanakana");
 const knex = require("./db/knex");
-// const {
-//   katakanaToKanji,
-//   getKanjiDefinitions,
-//   combiner,
-//   getKanjiData,
-//   convertToBigKatakana,
-// } = require("./helper.mjs");
 
 app.use(express.json()); //req.body
 app.use(cors());
