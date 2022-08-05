@@ -8,7 +8,7 @@ const {
   getKanjiDefinitions,
   combiner,
   getKanjiData,
-  convertedToBigKatakana,
+  convertToBigKatakana,
 } = require("./helper.js");
 
 app.use(express.json()); //req.body
@@ -17,7 +17,7 @@ app.use(cors());
 app.get("/api/kanji/", async (req, res) => {
   const { input: romajiName } = req.query;
   const hiragana = wanakana.toKana(romajiName);
-  const katakana = convertedToBigKatakana(wanakana.toKatakana(romajiName));
+  const katakana = convertToBigKatakana(wanakana.toKatakana(romajiName));
   const hiraganaArr = hiragana.split("");
   const katakanaArr = katakana.split("");
 

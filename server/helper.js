@@ -133,5 +133,5 @@ module.exports = {
   getKanjiDefinitions,
   combiner,
   getKanjiData,
-  convertedToBigKatakana,
+  convertToBigKatakana,
 };
