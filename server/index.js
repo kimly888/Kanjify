@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const wanakana = require("wanakana");
 const knex = require("./db/knex");
+const fetch = require("node-fetch");
 
 app.use(express.json()); //req.body
 app.use(cors());
@@ -180,17 +181,18 @@ app.get("/api/kanji/", async (req, res) => {
     kanjiDefinitions
   );
 
-  // Insert data to database
-  // for (let i = 0; i < kanjiData.length; i++) {
-  //   const kanjiName = kanjiData[i]["kanjiName"];
-  //   await knex("kanji").insert({
-  //     kanji: kanjiName,
-  //     furigana: hiragana,
-  //     romaji: romajiName,
-  //   });
-  // }
-
   res.status(200).send(kanjiData);
+
+  // Insert data to database
+  for (let i = 0; i < kanjiData.length; i++) {
+    const kanjiName = kanjiData[i]["kanjiName"];
+    await knex("kanji").insert({
+      kanji: kanjiName,
+      furigana: hiragana,
+      romaji: wanakana.toRomaji(hiragana),
+    });
+  }
+
 });
 
 const PORT = process.env.PORT || 4000;
