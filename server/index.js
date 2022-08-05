@@ -21,10 +21,7 @@ app.get("/api/kanji/", async (req, res) => {
   const katakanaArr = katakana.split("");
 
   const generatedKanjiObj = await katakanaToKanji(katakanaArr);
-  console.log(generatedKanjiObj);
-
   const generatedDefinitionObj = await getKanjiDefinitions(generatedKanjiObj);
-  console.log(generatedDefinitionObj);
 
   const kanjiNames = combiner(generatedKanjiObj);
   const kanjiDefinitions = combiner(generatedDefinitionObj);
