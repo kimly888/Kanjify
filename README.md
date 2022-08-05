@@ -47,6 +47,12 @@ In psql,
 CREATE DATABASE kanjify
 ```
 
+- WanaKana
+In `Kanjigy/server`, run
+```shell
+npm install wanakana
+```
+
 After installing those libraries, you should be able to run the app.
 In `Kanjify/client` and `In Kanjify/server`, run
 ```shell
