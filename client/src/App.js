@@ -79,12 +79,20 @@ function App() {
     },
   ];
   const [kanjiData, setKanjiData] = useState([]);
+  const [isActive, setIsActive] = useState(false);
 
   return (
-    <div className="App">
-      <Header setKanjiData={setKanjiData} />
-      <Main kanjiData={kanjiData} />
-    </div>
+    <body className="App">
+      <Header
+        isActive={isActive}
+        setIsActive={setIsActive}
+        setKanjiData={setKanjiData}
+      />
+      <Main
+        isActive={isActive}
+        kanjiData={kanjiData}
+      />
+    </body>
   );
 }
 
