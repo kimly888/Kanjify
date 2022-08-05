@@ -27,7 +27,7 @@ app.get("/api/kanji/", async (req, res) => {
   const kanjiDefinitions = combiner(generatedDefinitionObj);
   const kanjiData = getKanjiData(hiraganaArr, kanjiNames, kanjiDefinitions);
 
-  res.send(kanjiData);
+  res.status(200).send(kanjiData);
 });
 
 // app.get("/api/kanjiDB", async (req, res) => {
