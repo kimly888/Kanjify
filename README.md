@@ -18,28 +18,37 @@ You can try it out here: https://kanjify.herokuapp.com
 Once forking this repository and cloing it to your computer, install libraries to get started.
 - npm
 
-In `Kanjify/server` and `Kanjify/client`,
+In `Kanjify/server` and `Kanjify/client`, run
 ```shell
 $ npm install
 ```
 
 - Express
 
-In `Kanjify/server`,
+In `Kanjify/server`, run
 ```shell
 $ npm install express
 ```
 
 - Knex.js
 
-In `Kanjify/server`,
+In `Kanjify/server`, run
 ```shell
 $ npm install knex
 ```
 
+- PostgreSQL
+```shell
+$ createuser kanjifyuser
+```
+In psql,
+```
+CREATE DATABASE kanjify
+```
+
 
 After installing those libraries, you should be able to run the app.
-In `Kanjify/client` and `In Kanjify/server`,
+In `Kanjify/client` and `In Kanjify/server`, run
 ```shell
-npm start
+$ npm start
 ```
