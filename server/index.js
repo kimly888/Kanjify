@@ -45,6 +45,12 @@ async function katakanaToKanji(katakanaArr) {
     const shuffledKanjiArr = shuffle(kanjiArr);
     // Get first 3 kanji objects of shuffled array
     const kanjiTriplet = shuffledKanjiArr.slice(0, 3);
+    // If kanjiTriplet isn't a triplet because there aren't enough kanji for a certain romaji, duplicate its elements until it's a triplet
+    if (kanjiTriplet.length !== 3) {
+      while (kanjiTriplet.length < 3) {
+        kanjiTriplet.push(kanjiTriplet[0]);
+      }
+    }
 
     const kanjiCharactersArr = kanjiTriplet.map((singleKanjiObj) => {
       return singleKanjiObj.kanji.character;
@@ -122,21 +128,33 @@ const getKanjiData = (hiraganaArr, kanjiObj, definitionObj) => {
 
 // Function to convert small katakana to big katakana when it includes
 const convertToBigKatakana = (katakana) => {
-  const smallKatakana = ["ァ", "ィ", "ゥ", "ェ", "ォ", "ヵ", "ヶ", "ッ", "ャ", "ュ", "ョ", "ヮ"];
+  const smallKatakana = [
+    "ァ",
+    "ィ",
+    "ゥ",
+    "ェ",
+    "ォ",
+    "ヵ",
+    "ヶ",
+    "ッ",
+    "ャ",
+    "ュ",
+    "ョ",
+    "ヮ",
+  ];
 
-  for (let i=0; i < katakana.length; i++) {
-    for (let j=0; j < smallKatakana.length; j++){
-      if(katakana[i] === smallKatakana[j]) {
+  for (let i = 0; i < katakana.length; i++) {
+    for (let j = 0; j < smallKatakana.length; j++) {
+      if (katakana[i] === smallKatakana[j]) {
         let uniCodePoint = katakana[i].codePointAt(0);
-        let changeToBigKatakana = String.fromCodePoint(uniCodePoint+1);
+        let changeToBigKatakana = String.fromCodePoint(uniCodePoint + 1);
         katakana = katakana.replace(katakana[i], changeToBigKatakana);
       }
     }
   }
-  
-  return katakana;
-}
 
+  return katakana;
+};
 
 app.get("/api/kanji/", async (req, res) => {
   const { input: romajiName } = req.query;
@@ -153,10 +171,14 @@ app.get("/api/kanji/", async (req, res) => {
   const kanjiData = getKanjiData(hiraganaArr, kanjiNames, kanjiDefinitions);
   console.log(kanjiData)
   // Insert data to database
-  for (let i = 0; i < kanjiData.length; i++) {
-    const kanjiName = kanjiData[i]["kanjiName"];
-    await knex("kanji").insert({kanji: kanjiName, furigana: hiragana, romaji: romajiName});
-  };
+  // for (let i = 0; i < kanjiData.length; i++) {
+  //   const kanjiName = kanjiData[i]["kanjiName"];
+  //   await knex("kanji").insert({
+  //     kanji: kanjiName,
+  //     furigana: hiragana,
+  //     romaji: romajiName,
+  //   });
+  // }
 
   res.status(200).send(kanjiData);
 });
