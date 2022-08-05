@@ -27,15 +27,14 @@ app.get("/api/kanji/", async (req, res) => {
   const kanjiDefinitions = combiner(generatedDefinitionObj);
   const kanjiData = getKanjiData(hiraganaArr, kanjiNames, kanjiDefinitions);
 
+  // Insert data to database
+  for (let i = 0; i < kanjiData.length; i++) {
+    const kanjiName = kanjiData[i]["kanjiName"];
+    await knex("kanji").insert({kanji: kanjiName, furigana: hiragana, romaji: romajiName});
+  };
+
   res.status(200).send(kanjiData);
 });
-
-// app.get("/api/kanjiDB", async (req, res) => {
-//   const kanji = req.body;
-//   console.log(kanji);
-//   await knex("kanji").insert({kanji: "区理酢", furigana: "くりす", romaji: "kurisu"})
-//   res.send("test")
-// })
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

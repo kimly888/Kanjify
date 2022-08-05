@@ -8,7 +8,7 @@ const Name = ({ setIsActive, setKanjiData }) => {
     event.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:4000/api/kanji/?input=${name}`,
+        `https://kanjify-server.herokuapp.com/api/kanji/input=${name}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
