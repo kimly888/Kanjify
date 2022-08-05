@@ -179,7 +179,7 @@ app.get("/api/kanji/", async (req, res) => {
     await knex("kanji").insert({
       kanji: kanjiName,
       furigana: hiragana,
-      romaji: romajiName,
+      romaji: wanakana.toRomaji(hiragana),
     });
   }
 
