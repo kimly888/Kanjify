@@ -15,7 +15,6 @@ p {
 }
 
 .main-container {
-  width: 50%;
   height: 100vh;
   overflow: auto;
   display: flex;

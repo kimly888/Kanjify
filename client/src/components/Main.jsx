@@ -1,9 +1,14 @@
 import "./Main.css";
 import KanjiCard from "./KanjiCard";
 
-const Main = ({ kanjiData }) => {
+const Main = ({ isActive, kanjiData }) => {
   return (
-    <section className="main-container">
+    <section
+      className="main-container"
+      style={{
+        width: isActive ? "50%" : "0",
+      }}
+    >
       {kanjiData.map((name) => {
         return (
           <KanjiCard
