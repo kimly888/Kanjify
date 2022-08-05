@@ -19,4 +19,9 @@ button {
   border: none;
   border-radius: 0 10px 10px 0;
   padding: 1rem;
+ background-color: rgb(202, 202, 202);
+}
+
+button:active {
+  background-color: rgb(163, 163, 163);
 }

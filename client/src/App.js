@@ -78,7 +78,7 @@ function App() {
       ],
     },
   ];
-  const [kanjiData, setKanjiData] = useState(testData);
+  const [kanjiData, setKanjiData] = useState([]);
 
   return (
     <div className="App">
