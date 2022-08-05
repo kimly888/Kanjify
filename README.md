@@ -18,11 +18,7 @@ You can try it out here: https://kanjify.herokuapp.com
 Once forking this repository and cloing it to your computer, install libraries to get started.
 - npm
 
-In `Kanjify/server`,
-```shell
-$ npm install
-```
-In `Kanjify/client`,
+In `Kanjify/server` and `Kanjify/client`,
 ```shell
 $ npm install
 ```
@@ -43,12 +39,7 @@ $ npm install knex
 
 
 After installing those libraries, you should be able to run the app.
-In `Kanjify/client`,
-```shell
-npm start
-```
-
-In `In Kanjify/server`,
+In `Kanjify/client` and `In Kanjify/server`,
 ```shell
 npm start
 ```
