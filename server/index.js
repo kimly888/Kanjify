@@ -170,18 +170,19 @@ app.get("/api/kanji/", async (req, res) => {
   const kanjiNames = combiner(generatedKanjiObj);
   const kanjiDefinitions = combiner(generatedDefinitionObj);
   const kanjiData = getKanjiData(hiraganaArr, kanjiNames, kanjiDefinitions);
-  console.log(kanjiData)
+
+  res.status(200).send(kanjiData);
+
   // Insert data to database
   for (let i = 0; i < kanjiData.length; i++) {
     const kanjiName = kanjiData[i]["kanjiName"];
     await knex("kanji").insert({
       kanji: kanjiName,
       furigana: hiragana,
-      romaji: romajiName,
+      romaji: wanakana.toRomaji(hiragana),
     });
   }
 
-  res.status(200).send(kanjiData);
 });
 
 const PORT = process.env.PORT || 4000;
