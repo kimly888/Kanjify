@@ -49,12 +49,14 @@ async function katakanaToKanji(katakanaArr) {
     // If kanjiTriplet isn't a triplet because there aren't enough kanji for a certain romaji, duplicate its elements until it's a triplet
     if (kanjiTriplet.length !== 3) {
       while (kanjiTriplet.length < 3) {
-        kanjiTriplet.push(kanjiTriplet[0]);
+        kanjiTriplet.push(kanjiTriplet[0] || katakana);
       }
     }
 
     const kanjiCharactersArr = kanjiTriplet.map((singleKanjiObj) => {
-      return singleKanjiObj.kanji.character;
+      return typeof singleKanjiObj === "object"
+        ? singleKanjiObj.kanji.character
+        : singleKanjiObj;
     });
 
     result[count++] = kanjiCharactersArr;
@@ -69,6 +71,7 @@ async function getKanjiDefinitions(generatedKanjiObj) {
 
   for (const key in generatedKanjiObj) {
     const definitionArr = [];
+    
     for (const kanji of generatedKanjiObj[key]) {
       const kanjiResponseObj = await fetch(
         `https://kanjialive-api.p.rapidapi.com/api/public/kanji/${kanji}`,
@@ -85,7 +88,7 @@ async function getKanjiDefinitions(generatedKanjiObj) {
       // Get body of response from API which will be array of definition objects
       const kanjiObj = await kanjiResponseObj.json();
       // Get and store definition of each kanji object
-      const definition = kanjiObj.kanji.meaning.english;
+      const definition = kanjiObj.error || kanjiObj.kanji.meaning.english;
       definitionArr.push(definition);
     }
 
@@ -112,7 +115,7 @@ const combiner = (obj) => {
 };
 
 // Function to organize kanji character and definition values
-const getKanjiData = (hiraganaArr, kanjiObj, definitionObj) => {
+const getKanjiData = (hiraganaArr, romajiArr, kanjiObj, definitionObj) => {
   return Object.keys(kanjiObj).map((key) => {
     return {
       kanjiName: kanjiObj[key].join(""),
@@ -120,6 +123,7 @@ const getKanjiData = (hiraganaArr, kanjiObj, definitionObj) => {
         return {
           character: kanji,
           hiragana: hiraganaArr[index],
+          romaji: romajiArr[index],
           definition: definitionObj[key][index],
         };
       }),
@@ -163,13 +167,19 @@ app.get("/api/kanji/", async (req, res) => {
   const katakana = convertToBigKatakana(wanakana.toKatakana(romajiName));
   const hiraganaArr = hiragana.split("");
   const katakanaArr = katakana.split("");
+  const romajiArr = hiraganaArr.map((hiragana) => wanakana.toRomaji(hiragana));
 
   const generatedKanjiObj = await katakanaToKanji(katakanaArr);
   const generatedDefinitionObj = await getKanjiDefinitions(generatedKanjiObj);
 
   const kanjiNames = combiner(generatedKanjiObj);
   const kanjiDefinitions = combiner(generatedDefinitionObj);
-  const kanjiData = getKanjiData(hiraganaArr, kanjiNames, kanjiDefinitions);
+  const kanjiData = getKanjiData(
+    hiraganaArr,
+    romajiArr,
+    kanjiNames,
+    kanjiDefinitions
+  );
 
   res.status(200).send(kanjiData);
 
