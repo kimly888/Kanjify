@@ -3,12 +3,6 @@ const app = express();
 const cors = require("cors");
 const wanakana = require("wanakana");
 const knex = require("./db/knex");
-const {
-  katakanaToKanji,
-  getKanjiDefinitions,
-  combiner,
-  getKanjiData,
-} = require("./helper.js");
 
 app.use(express.json()); //req.body
 app.use(cors());
@@ -16,7 +10,7 @@ app.use(cors());
 app.get("/api/kanji/", async (req, res) => {
   const { input: romajiName } = req.query;
   const hiragana = wanakana.toKana(romajiName);
-  const katakana = wanakana.toKatakana(romajiName);
+  const katakana = convertToBigKatakana(wanakana.toKatakana(romajiName));
   const hiraganaArr = hiragana.split("");
   const katakanaArr = katakana.split("");
 
