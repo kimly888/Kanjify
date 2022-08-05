@@ -27,7 +27,7 @@ app.get("/api/kanji/", async (req, res) => {
   const kanjiNames = combiner(generatedKanjiObj);
   const kanjiDefinitions = combiner(generatedDefinitionObj);
   const kanjiData = getKanjiData(hiraganaArr, kanjiNames, kanjiDefinitions);
-
+  console.log(kanjiData)
   // Insert data to database
   for (let i = 0; i < kanjiData.length; i++) {
     const kanjiName = kanjiData[i]["kanjiName"];
