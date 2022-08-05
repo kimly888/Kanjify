@@ -1,12 +1,12 @@
 import "./Header.css";
 import Name from "./Name";
 
-const Header = () => {
+const Header = ({ setKanjiData }) => {
   return (
     <header>
       <h1 className="title">Kanjify</h1>
       <h2>Enter your name</h2>
-      <Name />
+      <Name setKanjiData={setKanjiData} />
     </header>
   );
 };

@@ -1,8 +1,9 @@
 import "./Name.css";
 import React, { useState } from "react";
 
-const Name = () => {
+const Name = ({setKanjiData}) => {
   const [name, setName] = useState("");
+
   const onSubmitForm = async event => {
     event.preventDefault();
     try {
@@ -11,7 +12,7 @@ const Name = () => {
         headers: { "Content-Type": "application/json" },
       });
       const obj = await response.json();
-      console.log(obj);
+      setKanjiData(obj);
     } catch (err) {
       console.error(err.message);
     }

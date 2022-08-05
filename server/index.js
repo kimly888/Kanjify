@@ -22,16 +22,13 @@ app.get("/api/kanji/", async (req, res) => {
   const katakanaArr = katakana.split("");
 
   const generatedKanjiObj = await katakanaToKanji(katakanaArr);
-  console.log(generatedKanjiObj);
-
   const generatedDefinitionObj = await getKanjiDefinitions(generatedKanjiObj);
-  console.log(generatedDefinitionObj);
 
   const kanjiNames = combiner(generatedKanjiObj);
   const kanjiDefinitions = combiner(generatedDefinitionObj);
   const kanjiData = getKanjiData(hiraganaArr, kanjiNames, kanjiDefinitions);
 
-  res.status(200).send(JSON.stringify({ kanjiData }));
+  res.send(kanjiData);
 });
 
 // app.get("/api/kanjiDB", async (req, res) => {
