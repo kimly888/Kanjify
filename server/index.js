@@ -3,7 +3,6 @@ const app = express();
 const cors = require("cors");
 const wanakana = require("wanakana");
 const knex = require("./db/knex");
-const path = require("path");
 const {
   katakanaToKanji,
   getKanjiDefinitions,
