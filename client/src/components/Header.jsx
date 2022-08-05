@@ -11,7 +11,7 @@ const Header = ({ isActive, setIsActive, setKanjiData }) => {
       }}
     >
       <h1 className="title">Kanjify</h1>
-      <h2>Enter your name</h2>
+      <h2 className="sub-title">Enter your name</h2>
       <Name setIsActive={setIsActive} setKanjiData={setKanjiData} />
     </header>
   );
