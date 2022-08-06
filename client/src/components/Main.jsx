@@ -7,6 +7,7 @@ const Main = ({ isActive, kanjiData }) => {
       className="main-container"
       style={{
         width: isActive ? "50%" : "0",
+        transition: "width 1s",
       }}
     >
       {kanjiData.map((name) => {
