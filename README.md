@@ -39,12 +39,20 @@ In psql,
 ```sql
 CREATE DATABASE kanjify;
 \c kanjify
-CREATE TABLE kanji;
+CREATE TABLE kanji (
+id SERIAL PRIMARY KEY,
+kanji STRING,
+furigana STRING,
+romaji STRING);
 ```
 
 In `Kanjify/server/db`, create `.env.local` file. Write information below.
 
-In `Kanjify/ser 
+```
+DB_USER=YOUR PSQL USERNAME
+DB_PASSWORD=YOUR PSQL PASSWORD
+DB_NAME=kanjify
+```
 
 After installing those libraries, you should be able to run the app.
 In `Kanjify/client` and `In Kanjify/server`, run
@@ -54,5 +62,5 @@ $ npm start
 
 ## Logic behind the scenes
 This map shows how frontend and backend communicate each other. It is not 100% accurate but was made for improving developers' understanding.
-![Map describing the kanjifying process](https://user-images.githubusercontent.com/90857923/182984379-71b84db5-31c3-4c62-8c94-cb71d4ce338f.jpg)
+![Map describing the kanjifying process](https://user-images.githubusercontent.com/90857923/183230404-e9eddeee-a914-4942-aa78-20e942b9e792.png)
 
