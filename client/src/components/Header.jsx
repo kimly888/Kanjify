@@ -2,7 +2,7 @@ import "./Header.css";
 import Name from "./Name";
 import React, { useState } from "react";
 
-const Header = ({ isActive, setIsActive, setKanjiData }) => {
+const Header = ({ isActive, setIsActive, isLoading, setIsLoading, setKanjiData }) => {
   return (
     <header
       style={{
@@ -18,6 +18,8 @@ const Header = ({ isActive, setIsActive, setKanjiData }) => {
         isActive={isActive}
         setIsActive={setIsActive}
         setKanjiData={setKanjiData}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
       />
     </header>
   );
