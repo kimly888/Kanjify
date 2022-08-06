@@ -10,14 +10,15 @@ function App() {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <body className="App">
+    <div className="App">
+      
       <Header
         isActive={isActive}
         setIsActive={setIsActive}
         setKanjiData={setKanjiData}
       />
       <Main isActive={isActive} kanjiData={kanjiData} />
-    </body>
+    </div>
   );
 }
 

@@ -34,7 +34,7 @@ const Name = ({ setIsActive, setKanjiData }) => {
         onChange={(event) => setName(event.target.value)}
       />
       <button type="submit" onClick={handleClick}>
-        GO
+        🪄
       </button>
     </form>
   );
