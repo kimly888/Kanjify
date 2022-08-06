@@ -185,17 +185,41 @@ const combineHiraganaNwithPrevLetter = (hiragana) => {
   return hiragana;
 }
 
+// Function to check character type of input value
+const checkCharacterTypeOfInputValue = (inputValue) => {
+    const romajiReg = /^[a-zA-Z]+$/;
+    const hiraganaReg = /^[ぁ-んー]*$/;
+    const katakanaReg = /^[ァ-ンヴー]*$/;
+
+    if (romajiReg.test(inputValue)) return "romaji";
+    if (hiraganaReg.test(inputValue)) return "hiragana";
+    if (katakanaReg.test(inputValue)) return "katakana";
+}
+
 
 app.get("/api/kanji/", async (req, res) => {
-  const { input: romajiName } = req.query;
-  const hiragana = wanakana.toKana(romajiName);
+  const { input: inputValue } = req.query;
+  const hurigana = wanakana.toKana(inputValue);
+  
   // If small katakana is included, convert it to big one
-  const katakana = convertToBigKatakana(wanakana.toKatakana(romajiName));
+  const katakana = convertToBigKatakana(wanakana.toKatakana(inputValue));
+
   // If katakana "ン" is included, combine katakana "ン" with previous character
   const katakanaArr = combineKatakanaNwithPrevLetter(katakana.split(""));
-  // If hiragana "ん" is included, combine hiragana "ん" with previous character
-  const hiraganaArr = combineHiraganaNwithPrevLetter(hiragana.split(""));
-  const romajiArr = hiraganaArr.map((hiragana) => wanakana.toRomaji(hiragana));
+
+  let huriganaArr;
+
+  const characterType = checkCharacterTypeOfInputValue(inputValue); 
+
+  if (characterType === "romaji" || characterType === "hiragana") {
+    // If hiragana "ん" is included, combine hiragana "ん" with previous character
+    huriganaArr = combineHiraganaNwithPrevLetter(hurigana.split(""));
+  } else if (characterType === "katakana") {
+    // If hiragana "ン" is included, combine katakana "ン" with previous character
+    huriganaArr = combineKatakanaNwithPrevLetter(hurigana.split(""));
+  }
+  
+  const romajiArr = huriganaArr.map((hurigana) => wanakana.toRomaji(hurigana));
 
   const generatedKanjiObj = await katakanaToKanji(katakanaArr);
   const generatedDefinitionObj = await getKanjiDefinitions(generatedKanjiObj);
@@ -203,7 +227,7 @@ app.get("/api/kanji/", async (req, res) => {
   const kanjiNames = combiner(generatedKanjiObj);
   const kanjiDefinitions = combiner(generatedDefinitionObj);
   const kanjiData = getKanjiData(
-    hiraganaArr,
+    huriganaArr,
     romajiArr,
     kanjiNames,
     kanjiDefinitions
@@ -211,8 +235,8 @@ app.get("/api/kanji/", async (req, res) => {
 
   res.status(200).send(kanjiData);
 
-  // Insert data to database
-  for (let i = 0; i < kanjiData.length; i++) {
+   // Insert data to database
+   for (let i = 0; i < kanjiData.length; i++) {
     const kanjiName = kanjiData[i]["kanjiName"];
     await knex("kanji").insert({
       kanji: kanjiName,
