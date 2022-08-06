@@ -4,8 +4,8 @@ import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
 
 const KanjiCard = ({ kanjiName, eachKanjiData }) => {
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(kanjiName);
+  const copyToClipboard = async () => {
+    await navigator.clipboard.writeText(kanjiName);
     alert("Copied " + kanjiName + " !");
   };
 
