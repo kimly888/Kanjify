@@ -1,3 +1,5 @@
+import React from "react";
+
 const KanjiCharacter = ({ hiragana, character, romaji }) => {
   return (
     <div className="kanji-character-wrapper">

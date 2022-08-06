@@ -1,13 +1,13 @@
 {
   "dependencies": {
     "dotenv": "^16.0.1",
-    "fireworks": "^2.2.7",
     "knex": "^2.2.0",
     "pg": "^8.7.3"
   },
-  "scripts": {
+    "scripts": {
     "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "cd client && npm install && npm run build"
   }
+  
 }
