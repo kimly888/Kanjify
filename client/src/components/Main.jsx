@@ -21,6 +21,7 @@ const Main = ({ isActive, kanjiData, isLoading }) => {
         transition: "width 1s",
       }}
     >
+
       {/* {isActive && <Fireworks {...fxProps} />} */}
       {isLoading ? (
         <LoadingSpinner />
