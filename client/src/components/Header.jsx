@@ -1,7 +1,5 @@
 import "./Header.css";
 import Name from "./Name";
-import WaveDown from "./WaveDown";
-import WaveUp from "./WaveUp";
 import React, { useState } from "react";
 
 const Header = ({ isActive, setIsActive, setKanjiData }) => {
@@ -12,7 +10,6 @@ const Header = ({ isActive, setIsActive, setKanjiData }) => {
         transition: "all 1s",
       }}
     >
-      <WaveDown />
       <h1 className="title">Kanjify</h1>
       <label className="caption" htmlFor="name">
         Enter your name
@@ -22,7 +19,6 @@ const Header = ({ isActive, setIsActive, setKanjiData }) => {
         setIsActive={setIsActive}
         setKanjiData={setKanjiData}
       />
-      <WaveUp />
     </header>
   );
 };
