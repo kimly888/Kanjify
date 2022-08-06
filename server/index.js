@@ -161,12 +161,40 @@ const convertToBigKatakana = (katakana) => {
   return katakana;
 };
 
+// Function to combine katakana "ン" with previous character
+const combineKatakanaNwithPrevLetter = (katakana) => {
+  if (katakana.includes("ン")) {
+    const indexKatakanaN = katakana.indexOf("ン");
+    const katakanaN = katakana[indexKatakanaN];
+    const preLetter = katakana[indexKatakanaN-1];
+    const combineTwoLetters = preLetter + katakanaN;
+    katakana.splice(indexKatakanaN-1, 2, combineTwoLetters);
+  }
+  return katakana;
+}
+
+// Function to combine hiragana "ん" with previous character
+const combineHiraganaNwithPrevLetter = (hiragana) => {
+  if (hiragana.includes("ん")) {
+    const indexHiraganaN = hiragana.indexOf("ん");
+    const hiraganaN = hiragana[indexHiraganaN];
+    const preLetter = hiragana[indexHiraganaN-1];
+    const combineTwoLetters = preLetter + hiraganaN;
+    hiragana.splice(indexHiraganaN-1, 2, combineTwoLetters);
+  }
+  return hiragana;
+}
+
+
 app.get("/api/kanji/", async (req, res) => {
   const { input: romajiName } = req.query;
   const hiragana = wanakana.toKana(romajiName);
+  // If small katakana is included, convert it to big one
   const katakana = convertToBigKatakana(wanakana.toKatakana(romajiName));
-  const hiraganaArr = hiragana.split("");
-  const katakanaArr = katakana.split("");
+  // If katakana "ン" is included, combine katakana "ン" with previous character
+  const katakanaArr = combineKatakanaNwithPrevLetter(katakana.split(""));
+  // If hiragana "ん" is included, combine hiragana "ん" with previous character
+  const hiraganaArr = combineHiraganaNwithPrevLetter(hiragana.split(""));
   const romajiArr = hiraganaArr.map((hiragana) => wanakana.toRomaji(hiragana));
 
   const generatedKanjiObj = await katakanaToKanji(katakanaArr);
