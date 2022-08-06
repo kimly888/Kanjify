@@ -1,6 +1,6 @@
 import "./Main.css";
 import KanjiCard from "./KanjiCard";
-import { Fireworks } from "fireworks/lib/react";
+// import { Fireworks } from "fireworks/lib/react";
 import LoadingSpinner from "./LoadingSpinner";
 
 const Main = ({ isActive, kanjiData, isLoading }) => {
@@ -21,7 +21,7 @@ const Main = ({ isActive, kanjiData, isLoading }) => {
         transition: "width 1s",
       }}
     >
-      {isActive && <Fireworks {...fxProps} />}
+      {/* {isActive && <Fireworks {...fxProps} />} */}
       {isLoading ? (
         <LoadingSpinner />
       ) : (
