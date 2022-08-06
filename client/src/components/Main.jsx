@@ -1,7 +1,16 @@
 import "./Main.css";
 import KanjiCard from "./KanjiCard";
+import { Fireworks } from "fireworks/lib/react";
 
 const Main = ({ isActive, kanjiData }) => {
+  let fxProps = {
+    colors: ["#ffc95e", "#fe5f55", "#5b5f97"],
+    calc: (props, i) => ({
+      ...props,
+      x: (i + 1) * (window.innerWidth / 3) - (i + 1) * 100,
+      y: 200 + Math.random() * 100 - 50 + (i === 2 ? -80 : 0),
+    }),
+  };
   return (
     <section
       className="main-container"
@@ -10,6 +19,7 @@ const Main = ({ isActive, kanjiData }) => {
         transition: "width 1s",
       }}
     >
+      {isActive && <Fireworks {...fxProps} />}
       {kanjiData.map((name) => {
         return (
           <KanjiCard
