@@ -1,5 +1,5 @@
 .kanji-card {
-  width: 40rem;
+  width: 30rem;
   flex: 0 0;
   display: flex;
   flex-direction: column;
@@ -28,9 +28,10 @@
 }
 
 .kanji-card:hover {
-  transform: translate(-10%, 0);
   border: 0.4rem solid #fe5f55;
-  width: 30rem;
+  border-radius: 42% 58% 38% 62% / 62% 33% 67% 38%;
+  padding: 5rem;
+  width: 32rem;
 }
 
 .kanji-name {
@@ -68,7 +69,7 @@
 }
 
 .kanji-character {
-  background-color: #ffc145;
+  background-color: #ffc95e;
   border-radius: 50%;
-  padding: 0.6rem;
+  padding: 0.7rem;
 }
