@@ -1,4 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap");
+
 header {
+  position: relative;
   width: 50%;
   height: 100vh;
   float: left;
@@ -7,10 +10,33 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(228, 228, 228);
+  background: #ffc145;
+  font-family: "Lora", serif;
 }
 
 .title {
-  font-size: 6rem;
+  font-size: 11rem;
+  font-weight: 500;
   padding: 2rem;
+  font-family: "Lora", serif;
+}
+
+.caption {
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-family: "Lora", serif;
+}
+
+.wave-down {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.wave-up {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
 }

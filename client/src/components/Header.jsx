@@ -1,12 +1,24 @@
 import "./Header.css";
 import Name from "./Name";
+import WaveDown from "./WaveDown";
+import WaveUp from "./WaveUp";
+import React, { useState } from "react";
 
-const Header = () => {
+const Header = ({ isActive, setIsActive, setKanjiData }) => {
   return (
-    <header>
+    <header
+      style={{
+        width: isActive ? "50%" : "100%",
+        transition: "width 1s",
+      }}
+    >
+      <WaveDown />
       <h1 className="title">Kanjify</h1>
-      <h2>Enter your name</h2>
-      <Name />
+      <label className="caption" htmlFor="name">
+        Enter your name
+      </label>
+      <Name setIsActive={setIsActive} setKanjiData={setKanjiData} />
+      <WaveUp />
     </header>
   );
 };

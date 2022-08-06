@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: "./.env.local",
+});
+
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
@@ -5,9 +9,10 @@ module.exports = {
   development: {
     client: "pg",
     connection: {
-      database: "kanjify",
-      user:   "mutokurumi",
-      password: "kanjifydb"
+      host: process.env.DB_HOST || "127.0.0.1",
+      port: process.env.DB_PORT || 5432,
+      database: process.env.DB_NAME || "kanjify",
+      user: process.env.DB_USER,
     },
     migrations: { directory: "./migrations" },
     seeds: { directory: "./seeds" },

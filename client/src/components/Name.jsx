@@ -1,26 +1,41 @@
 import "./Name.css";
 import React, { useState } from "react";
 
-const Name = () => {
+const Name = ({ setIsActive, setKanjiData }) => {
   const [name, setName] = useState("");
-  const onSubmitForm = async event => {
+
+  const onSubmitForm = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`http://localhost:4000/api/kanji/?input=${name}`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      });
-      const obj = await response.json();
-      console.log(obj);
+      const response = await fetch(
+        `https://kanjify-server.herokuapp.com/api/kanji/?input=${name}`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      const data = await response.json();
+      setKanjiData(data);
     } catch (err) {
       console.error(err.message);
     }
   };
 
+  const handleClick = () => {
+    setIsActive(true);
+  };
+
   return (
     <form onSubmit={onSubmitForm} method="GET">
-      <input type="text" name="name" id="name" onChange={event => setName(event.target.value)}/>
-      <button type="submit">GO</button>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        onChange={(event) => setName(event.target.value)}
+      />
+      <button type="submit" onClick={handleClick}>
+        🪄
+      </button>
     </form>
   );
 };

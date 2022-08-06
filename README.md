@@ -17,7 +17,7 @@ Try it out here: https://kanjify.herokuapp.com
 * [WanaKana](https://github.com/WaniKani/WanaKana)
 
 ## Getting Started
-Once forking this repository and cloning it to your computer, install libraries to get started.
+Once forking this repository and cloning it to your computer, install libraries.
 - npm
 
 In `Kanjify/server` and `Kanjify/client`, run
@@ -32,14 +32,19 @@ In `Kanjify/server`, run
 $ npm install express knex wanakana
 ```
 
+Then, set up your local database.
 - PostgreSQL
-```shell
-$ createuser kanjifyuser
-```
+
 In psql,
+```sql
+CREATE DATABASE kanjify;
+\c kanjify
+CREATE TABLE kanji;
 ```
-CREATE DATABASE kanjify
-```
+
+In `Kanjify/server/db`, create `.env.local` file. Write information below.
+
+In `Kanjify/ser 
 
 After installing those libraries, you should be able to run the app.
 In `Kanjify/client` and `In Kanjify/server`, run
