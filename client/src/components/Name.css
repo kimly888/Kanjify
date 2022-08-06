@@ -1,5 +1,5 @@
 form {
-  margin: 2rem;
+  margin: 2rem 0;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   font-family: "Lora", serif;
@@ -7,7 +7,7 @@ form {
 
 #name,
 button {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 #name {
@@ -20,22 +20,22 @@ button {
 }
 
 #name:focus {
-  outline:  0.1rem solid black;
+  outline: 0.1rem solid black;
 }
 
 button {
   border: none;
   border-radius: 0 10px 10px 0;
   padding: 1rem;
-  background-color: #5b5f97;
+  background-color: #C62368;
   color: white;
   font-family: "Lora", serif;
 }
 
 button:hover {
-  background-color: #6468a4;
+  background-color: #e82878;
 }
 
 button:active {
-  background-color: #4c4f80;
+  background-color: #bc2263;
 }

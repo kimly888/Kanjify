@@ -9,7 +9,7 @@ const Header = ({ isActive, setIsActive, setKanjiData }) => {
     <header
       style={{
         width: isActive ? "50%" : "100%",
-        transition: "width 1s",
+        transition: "all 1s",
       }}
     >
       <WaveDown />
@@ -17,7 +17,11 @@ const Header = ({ isActive, setIsActive, setKanjiData }) => {
       <label className="caption" htmlFor="name">
         Enter your name
       </label>
-      <Name setIsActive={setIsActive} setKanjiData={setKanjiData} />
+      <Name
+        isActive={isActive}
+        setIsActive={setIsActive}
+        setKanjiData={setKanjiData}
+      />
       <WaveUp />
     </header>
   );
