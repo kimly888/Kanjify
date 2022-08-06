@@ -1,7 +1,7 @@
 import "./Name.css";
 import React, { useState } from "react";
 
-const Name = ({ isActive, setIsActive, setKanjiData }) => {
+const Name = ({ setIsActive, setKanjiData }) => {
   const [name, setName] = useState("");
 
   const onSubmitForm = async (event) => {
@@ -26,14 +26,7 @@ const Name = ({ isActive, setIsActive, setKanjiData }) => {
   };
 
   return (
-    <form
-      onSubmit={onSubmitForm}
-      method="GET"
-      style={{
-        marginBottom: isActive ? "30rem" : "0",
-        transition: "all 1s",
-      }}
-    >
+    <form onSubmit={onSubmitForm} method="GET">
       <input
         type="text"
         name="name"
