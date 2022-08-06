@@ -10,33 +10,20 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   background: #ffc145;
+  background: url(../svgs/layered-waves-haikei.svg);
+  background-size: cover;
   font-family: "Lora", serif;
+  color: white;
 }
 
 .title {
-  font-size: 11rem;
+  font-size: 7rem;
   font-weight: 500;
-  padding: 2rem;
-  font-family: "Lora", serif;
 }
 
 .caption {
   margin-top: 2rem;
   font-size: 2rem;
-  font-family: "Lora", serif;
-}
-
-.wave-down {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-}
-
-.wave-up {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
 }
