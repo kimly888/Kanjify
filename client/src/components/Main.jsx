@@ -1,5 +1,6 @@
 import "./Main.css";
 import KanjiCard from "./KanjiCard";
+import Options from "./Options";
 // import { Fireworks } from "fireworks/lib/react";
 import LoadingSpinner from "./LoadingSpinner";
 
@@ -34,6 +35,12 @@ const Main = ({ isActive, kanjiData, isLoading }) => {
             />
           );
         })
+      )}
+
+      {isLoading ? (
+        <span></span>
+      ) : (
+        <Options kanjiData={kanjiData}/>
       )}
     </section>
   );
