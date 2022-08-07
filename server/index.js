@@ -8,6 +8,10 @@ const fetch = require("node-fetch");
 app.use(express.json()); //req.body
 app.use(cors());
 
+// **** Helper functions **** //
+// LOG: We tried to make a file to save helper functions but it didn't work 
+// because helper functions were written with common JS.
+
 function shuffle(arr) {
   const cloneArray = [...arr];
 
@@ -196,6 +200,7 @@ const checkCharacterTypeOfInputValue = (inputValue) => {
     if (katakanaReg.test(inputValue)) return "katakana";
 }
 
+// *** helper functions until here *** //
 
 app.get("/api/kanji/", async (req, res) => {
   const { input: inputValue } = req.query;
