@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const wanakana = require("wanakana");
 const knex = require("./db/knex");
-// const fetch = require("node-fetch");
+const fetch = require("node-fetch");
 
 app.use(express.json()); //req.body
 app.use(cors());
