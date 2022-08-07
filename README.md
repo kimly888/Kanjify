@@ -41,9 +41,9 @@ CREATE DATABASE kanjify;
 \c kanjify
 CREATE TABLE kanji (
 id SERIAL PRIMARY KEY,
-kanji STRING,
-furigana STRING,
-romaji STRING);
+kanji VARCHAR,
+furigana VARCHAR,
+romaji VARCHAR);
 ```
 
 In `Kanjify/server/db`, create `.env.local` file. Write information below.
