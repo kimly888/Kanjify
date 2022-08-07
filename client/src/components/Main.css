@@ -21,9 +21,6 @@
   gap: 2rem;
   /* scroll-snap-type: y mandatory; */
   font-family: "Lora", serif;
-  background-color: #5b5f97;
-  /* background: url(../svgs/blurry-gradient-haikei.svg);
-  background-size: cover; */
 }
 
 .main-container::-webkit-scrollbar {
