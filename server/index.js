@@ -233,7 +233,7 @@ app.get("/api/kanji/", async (req, res) => {
 app.get("/api/favorite", async (req, res) => {
   const favorite = req.query["options"];
   await knex("favorite").insert({ kanji: favorite });
-  const countObj = await knex("favorite").where({kanji: favorite}).count("id");
+  const countObj = await knex("favorite").where({kanji: favorite}).count("kanji");
   const count = countObj[0]["count"];
   if (count === 1) {
     res.status(200).send(`You're the first person who selected ${favorite} !`);

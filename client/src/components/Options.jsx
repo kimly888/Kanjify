@@ -3,7 +3,7 @@
 const Options = ({ kanjiData}) => {
 
   return (
-    <form action="http://localhost:4000/api/favorite" method="GET">
+    <form action="https://kanjify-server.herokuapp.com/api/favorite" method="GET">
         <label for="options">
           <select name="options" id="options">
             <option value="">--Choose your favorite--</option>
