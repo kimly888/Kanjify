@@ -231,18 +231,16 @@ app.get("/api/kanji/", async (req, res) => {
 });
 
 app.get("/api/favorite", async (req, res) => {
-  const favorite = req.query["kanji-options"];
+  const favorite = req.query["options"];
   await knex("favorite").insert({ kanji: favorite });
   const countObj = await knex("favorite").where({kanji: favorite}).count("id");
   const count = countObj[0]["count"];
-  console.log(count, favorite)
-
   if (count === 1) {
     res.status(200).send(`You're the first person who selected ${favorite} !`);
   } else {
     res.status(200).send(`${count} people have chosen ${favorite} !`);
   }
-
+  res.status(202).send()
 })
 
 const PORT = process.env.PORT || 4000;
