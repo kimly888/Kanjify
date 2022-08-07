@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const wanakana = require("wanakana");
 const knex = require("./db/knex");
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
 
 app.use(express.json()); //req.body
 app.use(cors());
@@ -189,17 +189,6 @@ const combineHiraganaNwithPrevLetter = (hiragana) => {
   return hiragana;
 }
 
-// Function to check character type of input value
-const checkCharacterTypeOfInputValue = (inputValue) => {
-    const romajiReg = /^[a-zA-Z]+$/;
-    const hiraganaReg = /^[ぁ-んー]*$/;
-    const katakanaReg = /^[ァ-ンヴー]*$/;
-
-    if (romajiReg.test(inputValue)) return "romaji";
-    if (hiraganaReg.test(inputValue)) return "hiragana";
-    if (katakanaReg.test(inputValue)) return "katakana";
-}
-
 // *** helper functions until here *** //
 
 app.get("/api/kanji/", async (req, res) => {
@@ -211,13 +200,8 @@ app.get("/api/kanji/", async (req, res) => {
   const katakanaArr = combineKatakanaNwithPrevLetter(katakanaArrTemp);   // Combine "ン" with its previous character. e.g.) ["ア", "ン"] → ["アン"]
 
   let furiganaArr;
-  const characterType = checkCharacterTypeOfInputValue(inputValue); 
-  if (characterType === "romaji" || characterType === "hiragana") {
-    furiganaArr = combineHiraganaNwithPrevLetter(furigana.split("")); // If hiragana "ん" is included, combine hiragana "ん" with previous character
-  } else if (characterType === "katakana") {
-    furiganaArr = combineKatakanaNwithPrevLetter(furigana.split("")); // If hiragana "ン" is included, combine katakana "ン" with previous character
-  }
-  
+  furiganaArr = combineHiraganaNwithPrevLetter(furigana.split(""));
+  console.log(furiganaArr)
   const romajiArr = furiganaArr.map((furigana) => wanakana.toRomaji(furigana));
   
   const generatedKanjiObj = await katakanaToKanji(katakanaArr);
