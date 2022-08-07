@@ -1,27 +1,41 @@
 form {
-  margin-top: 2rem;
+  margin: 2rem 0;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-family: "Lora", serif;
 }
 
-#name, button {
+#name,
+button {
   font-size: 2rem;
 }
 
 #name {
+  outline: none;
   border: none;
   padding: 1rem 0;
   border-radius: 10px 0 0 10px;
   text-align: center;
+  font-family: "Lora", serif;
+}
+
+#name:focus {
+  outline: 0.1rem solid black;
 }
 
 button {
   border: none;
   border-radius: 0 10px 10px 0;
   padding: 1rem;
- background-color: rgb(202, 202, 202);
+  background-color: #C62368;
+  color: white;
+  font-family: "Lora", serif;
+}
+
+button:hover {
+  background-color: #e82878;
 }
 
 button:active {
-  background-color: rgb(163, 163, 163);
+  background-color: #bc2263;
 }

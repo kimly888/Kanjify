@@ -1,12 +1,14 @@
 import "./Name.css";
 import React, { useState } from "react";
 
-const Name = ({ setIsActive, setKanjiData }) => {
+const Name = ({ isActive, setIsActive, isLoading, setIsLoading, setKanjiData }) => {
   const [name, setName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmitForm = async (event) => {
     event.preventDefault();
     try {
+      setIsLoading(true);
       const response = await fetch(
         `https://kanjify-server.herokuapp.com/api/kanji/?input=${name}`,
         {
@@ -15,9 +17,11 @@ const Name = ({ setIsActive, setKanjiData }) => {
         }
       );
       const data = await response.json();
+      setIsLoading(false);
       setKanjiData(data);
     } catch (err) {
-      console.error(err.message);
+      setErrorMessage("Unable to fetch user list");
+      setIsLoading(false);
     }
   };
 
@@ -26,15 +30,22 @@ const Name = ({ setIsActive, setKanjiData }) => {
   };
 
   return (
-    <form onSubmit={onSubmitForm} method="GET">
+    <form
+      onSubmit={onSubmitForm}
+      method="GET"
+      style={{
+        marginBottom: isActive ? "30rem" : "0",
+        transition: "all 1s",
+      }}
+    >
       <input
         type="text"
         name="name"
         id="name"
         onChange={(event) => setName(event.target.value)}
       />
-      <button type="submit" onClick={handleClick}>
-        GO
+      <button type="submit" onClick={handleClick} disabled={isLoading}>
+        🪄
       </button>
     </form>
   );

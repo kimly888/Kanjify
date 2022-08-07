@@ -1,17 +1,8 @@
-import React from "react";
-
 const KanjiCharacterDefinition = ({ character, definition }) => {
   return (
     <div className="kanji-character-breakdown">
-
-      <div className="kanji-character">
-        <h2 className="kanji">{character}</h2>
-      </div>
-      
-      <div className="kanji-description">
-        <p>: {definition}</p>
-      </div>
-      
+      <h2 className="kanji-character">{character}</h2>
+      <p className="kanji-definition">: {definition}</p>
     </div>
   );
 };

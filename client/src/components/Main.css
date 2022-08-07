@@ -1,16 +1,14 @@
-h1 {
+.kanji {
+  font-size: 2.5rem;
+}
+
+.kanji-character {
   font-size: 2rem;
 }
 
-h2 {
-  font-size: 1.8rem;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-p {
+.furigana,
+.romaji,
+.kanji-definition {
   font-size: 1.3rem;
 }
 
@@ -20,5 +18,23 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
+  /* scroll-snap-type: y mandatory; */
+  font-family: "Lora", serif;
+  background-color: #5b5f97;
+  /* background: url(../svgs/blurry-gradient-haikei.svg);
+  background-size: cover; */
 }
 
+.main-container::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.main-container::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+.main-container::-webkit-scrollbar-thumb {
+  background-color: #ffc145;
+  border-radius: 10px;
+}

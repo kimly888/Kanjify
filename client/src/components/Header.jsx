@@ -2,17 +2,25 @@ import "./Header.css";
 import Name from "./Name";
 import React, { useState } from "react";
 
-const Header = ({ isActive, setIsActive, setKanjiData }) => {
+const Header = ({ isActive, setIsActive, isLoading, setIsLoading, setKanjiData }) => {
   return (
     <header
       style={{
         width: isActive ? "50%" : "100%",
-        transition: "width 1s",
+        transition: "all 1s",
       }}
     >
       <h1 className="title">Kanjify</h1>
-      <h2 className="sub-title">Enter your name</h2>
-      <Name setIsActive={setIsActive} setKanjiData={setKanjiData} />
+      <label className="caption" htmlFor="name">
+        Enter your name
+      </label>
+      <Name
+        isActive={isActive}
+        setIsActive={setIsActive}
+        setKanjiData={setKanjiData}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+      />
     </header>
   );
 };
