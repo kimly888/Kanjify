@@ -3,8 +3,14 @@ import KanjiCharacter from "./KanjiCharacter";
 import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
 
 const KanjiCard = ({ kanjiName, eachKanjiData }) => {
+
+  const copyToClipboard = async () => {
+    await navigator.clipboard.writeText(kanjiName);
+    alert("Copied " + kanjiName + " !");
+  };
+
   return (
-    <article className="kanji-card">
+    <article className="kanji-card" onClick={copyToClipboard} >
       
       <div className="kanji-name">
         {eachKanjiData.map((kanji) => (
