@@ -8,6 +8,10 @@ const fetch = require("node-fetch");
 app.use(express.json()); //req.body
 app.use(cors());
 
+// **** Helper functions **** //
+// LOG: We tried to make a file to save helper functions but it didn't work 
+// because helper functions were written with common JS.
+
 function shuffle(arr) {
   const cloneArray = [...arr];
 
@@ -196,38 +200,33 @@ const checkCharacterTypeOfInputValue = (inputValue) => {
     if (katakanaReg.test(inputValue)) return "katakana";
 }
 
+// *** helper functions until here *** //
 
 app.get("/api/kanji/", async (req, res) => {
   const { input: inputValue } = req.query;
-  const hurigana = wanakana.toKana(inputValue);
-  
-  // If small katakana is included, convert it to big one
-  const katakana = convertToBigKatakana(wanakana.toKatakana(inputValue));
+  const furigana = wanakana.toKana(inputValue);
+  const katakanaTemp = wanakana.toKatakana(inputValue);
+  const katakana = convertToBigKatakana(katakanaTemp); // Converts small katakana to a big one. e.g.) "ッ"　→ "ツ"
+  const katakanaArrTemp = katakana.split("");
+  const katakanaArr = combineKatakanaNwithPrevLetter(katakanaArrTemp);   // Combine "ン" with its previous character. e.g.) ["ア", "ン"] → ["アン"]
 
-  // If katakana "ン" is included, combine katakana "ン" with previous character
-  const katakanaArr = combineKatakanaNwithPrevLetter(katakana.split(""));
-
-  let huriganaArr;
-
+  let furiganaArr;
   const characterType = checkCharacterTypeOfInputValue(inputValue); 
-
   if (characterType === "romaji" || characterType === "hiragana") {
-    // If hiragana "ん" is included, combine hiragana "ん" with previous character
-    huriganaArr = combineHiraganaNwithPrevLetter(hurigana.split(""));
+    furiganaArr = combineHiraganaNwithPrevLetter(furigana.split("")); // If hiragana "ん" is included, combine hiragana "ん" with previous character
   } else if (characterType === "katakana") {
-    // If hiragana "ン" is included, combine katakana "ン" with previous character
-    huriganaArr = combineKatakanaNwithPrevLetter(hurigana.split(""));
+    furiganaArr = combineKatakanaNwithPrevLetter(furigana.split("")); // If hiragana "ン" is included, combine katakana "ン" with previous character
   }
   
-  const romajiArr = huriganaArr.map((hurigana) => wanakana.toRomaji(hurigana));
-
+  const romajiArr = furiganaArr.map((furigana) => wanakana.toRomaji(furigana));
+  
   const generatedKanjiObj = await katakanaToKanji(katakanaArr);
   const generatedDefinitionObj = await getKanjiDefinitions(generatedKanjiObj);
 
   const kanjiNames = combiner(generatedKanjiObj);
   const kanjiDefinitions = combiner(generatedDefinitionObj);
   const kanjiData = getKanjiData(
-    huriganaArr,
+    furiganaArr,
     romajiArr,
     kanjiNames,
     kanjiDefinitions
@@ -240,8 +239,8 @@ app.get("/api/kanji/", async (req, res) => {
     const kanjiName = kanjiData[i]["kanjiName"];
     await knex("kanji").insert({
       kanji: kanjiName,
-      furigana: hiragana,
-      romaji: wanakana.toRomaji(hiragana),
+      furigana: furigana,
+      romaji: wanakana.toRomaji(furigana),
     });
   }
 
