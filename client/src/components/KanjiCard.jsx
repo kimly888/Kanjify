@@ -30,7 +30,7 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
       </div>
       <div className="links-wrapper">
         {/* TODO add onClick function to save to favourites! local storage first */}
-        <p className="links-text">+ Add to Favourites</p>
+        <p className="links-text">Add to Favourites</p>
         <a
           href="https://twitter.com/share?ref_src=twsrc%5Etfw"
           className="links-text"
@@ -38,7 +38,7 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
           data-hashtags="kanjifyed"
           data-show-count="false"
         >
-          + Tweet
+          | Tweet
         </a>
         <script
           async
