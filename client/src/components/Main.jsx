@@ -6,7 +6,14 @@ import LoadingSpinner from "./LoadingSpinner";
 
 // TODO render a favourites page
 
-const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
+const Main = ({
+  isActive,
+  kanjiData,
+  favourites,
+  setFavourites,
+  isLoading,
+  isSubmitted,
+}) => {
   let fxProps = {
     colors: ["#ffc95e", "#fe5f55", "#5b5f97"],
     calc: (props, i) => ({
@@ -33,6 +40,8 @@ const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
             <KanjiCard
               kanjiName={name.kanjiName}
               eachKanjiData={name.eachKanji}
+              favourites={favourites}
+              setFavourites={setFavourites}
             />
           );
         })

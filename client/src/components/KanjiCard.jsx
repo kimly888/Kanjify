@@ -2,19 +2,28 @@ import "./KanjiCard.css";
 import KanjiCharacter from "./KanjiCharacter";
 import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
 
-const KanjiCard = ({ kanjiName, eachKanjiData }) => {
-  const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(kanjiName);
-    alert("Copied " + kanjiName + " !");
-  };
+const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
+  // const copyToClipboard = async () => {
+  //   await navigator.clipboard.writeText(kanjiName);
+  //   alert("Copied " + kanjiName + " !");
+  // };
 
-  // TODO update function to save to favourites! local storage first...
-  const saveFavourite = () => {
-    alert("Saved!");
+  const saveFavourite = async () => {
+    // eachKanjiData to access current data
+    // array of two or more objects
+    console.log(eachKanjiData);
+
+    // Set state in App.js - OK
+    setFavourites((values) => [...values, eachKanjiData]);
+
+    // TODO add state toggle to render favourites when clicked
+    // maybe isFavourites and boolean - pass into Main...
+    // then try saving to database...by user would be after that...
   };
 
   return (
-    <article className="kanji-card" onClick={copyToClipboard}>
+    // <article className="kanji-card" onClick={copyToClipboard}>
+    <article className="kanji-card">
       <div className="kanji-name">
         {eachKanjiData.map((kanji) => (
           <KanjiCharacter

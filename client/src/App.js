@@ -8,6 +8,10 @@ const HOME_API = "http://localhost:4000/";
 
 function App() {
   const [kanjiData, setKanjiData] = useState([]);
+
+  // added favourites
+  const [favourites, setFavourites] = useState([]);
+
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
@@ -25,6 +29,8 @@ function App() {
         isActive={isActive}
         isLoading={isLoading}
         kanjiData={kanjiData}
+        favourites={favourites}
+        setFavourites={setFavourites}
         isSubmitted={isSubmitted}
       />
     </div>
