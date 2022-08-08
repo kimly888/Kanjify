@@ -73,7 +73,7 @@ const Name = ({
         🪄
       </button>
       {/* placeholder for favourites */}
-      <p className="favourites" onClick="handleFavourites">
+      <p className="favourites" onClick={handleFavourites}>
         Favourites
       </p>
     </form>
