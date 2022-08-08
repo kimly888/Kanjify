@@ -244,6 +244,7 @@ app.get("/api/kanji/", async (req, res) => {
 
 app.get("/api/favorite", async (req, res) => {
   const favorite = req.query["options"];
+  console.log("favorite", favorite);
 
   if (favorite) {
     await knex("favorite").insert({ kanji: favorite });

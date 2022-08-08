@@ -6,6 +6,8 @@ const HOME_API = "http://localhost:4000/";
 const Name = ({
   isActive,
   setIsActive,
+  isFavourites,
+  setIsFavourites,
   isLoading,
   setIsLoading,
   setKanjiData,
@@ -39,6 +41,13 @@ const Name = ({
     setIsActive(true);
   };
 
+  const handleFavourites = () => {
+    // if isFavourites is false, set to true
+    if (!isFavourites) {
+      setIsFavourites(true);
+    }
+  };
+
   return (
     <form
       onSubmit={onSubmitForm}
@@ -64,7 +73,9 @@ const Name = ({
         🪄
       </button>
       {/* placeholder for favourites */}
-      <p className="favourites">Favourites</p>
+      <p className="favourites" onClick="handleFavourites">
+        Favourites
+      </p>
     </form>
   );
 };

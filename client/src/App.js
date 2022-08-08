@@ -11,6 +11,7 @@ function App() {
 
   // added favourites
   const [favourites, setFavourites] = useState([]);
+  const [isFavourites, setIsFavourites] = useState(false);
 
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,6 +22,8 @@ function App() {
       <Header
         isActive={isActive}
         setIsActive={setIsActive}
+        isFavourites={isFavourites}
+        setIsFavourites={setIsFavourites}
         isLoading={isLoading}
         setIsLoading={setIsLoading}
         setKanjiData={setKanjiData}

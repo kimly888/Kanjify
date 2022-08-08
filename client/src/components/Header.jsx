@@ -5,6 +5,8 @@ import React, { useState } from "react";
 const Header = ({
   isActive,
   setIsActive,
+  isFavourites,
+  setIsFavourites,
   isLoading,
   setIsLoading,
   setKanjiData,
@@ -24,6 +26,8 @@ const Header = ({
       <Name
         isActive={isActive}
         setIsActive={setIsActive}
+        setIsFavourites={setIsFavourites}
+        isFavourites={isFavourites}
         setKanjiData={setKanjiData}
         isLoading={isLoading}
         setIsLoading={setIsLoading}
