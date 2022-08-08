@@ -10,23 +10,6 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
 
   return (
     <article className="kanji-card" onClick={copyToClipboard}>
-      <button>
-        <a
-          href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-          class="twitter-share-button"
-          data-size="large"
-          data-hashtags="kanjifyed"
-          data-show-count="false"
-        >
-          Tweet
-        </a>
-        <script
-          async
-          src="https://platform.twitter.com/widgets.js"
-          charset="utf-8"
-        ></script>
-      </button>
-
       <div className="kanji-name">
         {eachKanjiData.map((kanji) => (
           <KanjiCharacter
@@ -48,6 +31,20 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
       <div className="links-wrapper">
         {/* TODO add onClick function to save to favourites! local storage first */}
         <p className="links-text">+ Add to Favourites</p>
+        <a
+          href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+          className="links-text"
+          data-size="large"
+          data-hashtags="kanjifyed"
+          data-show-count="false"
+        >
+          + Tweet
+        </a>
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charset="utf-8"
+        ></script>
       </div>
     </article>
   );
