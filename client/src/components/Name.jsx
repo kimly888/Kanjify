@@ -1,6 +1,8 @@
 import "./Name.css";
 import React, { useState } from "react";
 
+const HOME_API = "http://localhost:4000/";
+
 const Name = ({
   isActive,
   setIsActive,
@@ -16,7 +18,9 @@ const Name = ({
     try {
       setIsLoading(true);
       const response = await fetch(
-        `https://kanjify-server.herokuapp.com/api/kanji/?input=${name}`,
+        //  Switched to HOME_API for development
+        // `https://kanjify-server.herokuapp.com/api/kanji/?input=${name}`,
+        `${HOME_API}api/kanji/?input=${name}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
