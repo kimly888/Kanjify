@@ -63,6 +63,8 @@ const Name = ({
       <button type="submit" onClick={handleClick} disabled={isLoading}>
         🪄
       </button>
+      {/* placeholder for favourites */}
+      <p className="favourites">Favourites</p>
     </form>
   );
 };

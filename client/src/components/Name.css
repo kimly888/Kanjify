@@ -27,7 +27,7 @@ button {
   border: none;
   border-radius: 0 10px 10px 0;
   padding: 1rem;
-  background-color: #C62368;
+  background-color: #c62368;
   color: white;
   font-family: "Lora", serif;
 }
@@ -38,4 +38,13 @@ button:hover {
 
 button:active {
   background-color: #bc2263;
+}
+
+/* LEGACY PROJECT - ADDED CSS */
+
+.favourites {
+  text-align: right;
+  padding-top: 12px;
+  font-size: 18px;
+  font-family: "Lora", serif;
 }
