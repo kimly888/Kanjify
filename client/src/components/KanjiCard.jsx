@@ -46,7 +46,7 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
         ))}
       </div>
       <div className="links-wrapper">
-        <p className="add-favourite">Add to favourites +</p>
+        <p className="links-text">Add to favourites +</p>
       </div>
     </article>
   );

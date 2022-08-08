@@ -74,6 +74,8 @@
   padding: 0.7rem;
 }
 
+/* LEGACY PROJECT - ADDED CSS */
+
 /* for + fav and share */
 .links-wrapper {
   margin-top: 24px;
@@ -84,8 +86,8 @@
   align-items: space-around;
 }
 
-/* placeholder for favourites link */
-.add-favourite {
+/* placeholder for links formatting */
+.links-text {
   font-size: 16px;
   font-weight: bold;
   color: #444;
