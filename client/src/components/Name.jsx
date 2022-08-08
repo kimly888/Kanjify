@@ -1,7 +1,13 @@
 import "./Name.css";
 import React, { useState } from "react";
 
-const Name = ({ isActive, setIsActive, isLoading, setIsLoading, setKanjiData }) => {
+const Name = ({
+  isActive,
+  setIsActive,
+  isLoading,
+  setIsLoading,
+  setKanjiData,
+}) => {
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -42,7 +48,13 @@ const Name = ({ isActive, setIsActive, isLoading, setIsLoading, setKanjiData }) 
         type="text"
         name="name"
         id="name"
-        onChange={(event) => setName(event.target.value)}
+        onChange={(event) => {
+          if (event.target.value.includes(" ")) {
+            setName(event.trim());
+          } else {
+            setName(event.target.value);
+          }
+        }}
       />
       <button type="submit" onClick={handleClick} disabled={isLoading}>
         🪄
