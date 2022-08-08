@@ -8,6 +8,11 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
     alert("Copied " + kanjiName + " !");
   };
 
+  // TODO update function to save to favourites! local storage first...
+  const saveFavourite = () => {
+    alert("Saved!");
+  };
+
   return (
     <article className="kanji-card" onClick={copyToClipboard}>
       <div className="kanji-name">
@@ -29,8 +34,9 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
         ))}
       </div>
       <div className="links-wrapper">
-        {/* TODO add onClick function to save to favourites! local storage first */}
-        <p className="links-text">Add to Favourites</p>
+        <p className="links-text" onClick={saveFavourite}>
+          Add to Favourites
+        </p>
         <a
           href="https://twitter.com/share?ref_src=twsrc%5Etfw"
           className="links-text"
