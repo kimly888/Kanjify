@@ -40,7 +40,7 @@ const Name = ({
       onSubmit={onSubmitForm}
       method="GET"
       style={{
-        marginBottom: isActive ? "30rem" : "0",
+        marginBottom: isActive ? "20rem" : "10rem",
         transition: "all 1s",
       }}
     >
