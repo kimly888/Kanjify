@@ -66,8 +66,6 @@ async function katakanaToKanji(katakanaArr) {
     result[count++] = kanjiCharactersArr;
   }
 
-  console.log("katakana to kanji: ", result);
-
   return result;
 }
 
