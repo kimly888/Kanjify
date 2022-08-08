@@ -10,6 +10,7 @@ function App() {
   const [kanjiData, setKanjiData] = useState([]);
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setSubmit] = useState(false);
 
   return (
     <div className="App">
@@ -24,6 +25,7 @@ function App() {
         isActive={isActive}
         isLoading={isLoading}
         kanjiData={kanjiData}
+        isSubmitted={isSubmitted}
       />
     </div>
   );

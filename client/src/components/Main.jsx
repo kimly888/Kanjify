@@ -1,9 +1,10 @@
 import "./Main.css";
 import KanjiCard from "./KanjiCard";
+import Options from "./Options";
 // import { Fireworks } from "fireworks/lib/react";
 import LoadingSpinner from "./LoadingSpinner";
 
-const Main = ({ isActive, kanjiData, isLoading }) => {
+const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
   let fxProps = {
     colors: ["#ffc95e", "#fe5f55", "#5b5f97"],
     calc: (props, i) => ({
@@ -34,6 +35,12 @@ const Main = ({ isActive, kanjiData, isLoading }) => {
             />
           );
         })
+      )}
+
+      {isLoading ? (
+        <span></span>
+      ) : (
+        <Options kanjiData={kanjiData} isSubmitted={isSubmitted}/>
       )}
     </section>
   );
