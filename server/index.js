@@ -9,9 +9,9 @@ app.use(express.json()); //req.body
 app.use(cors());
 
 // **** Helper functions **** //
-// LOG: We tried to make a file to save helper functions but it didn't work 
+// LOG: We tried to make a file to save helper functions but it didn't work
 // because helper functions were written with common JS.
-
+// helper to shuffle arrays
 function shuffle(arr) {
   const cloneArray = [...arr];
 
@@ -66,6 +66,8 @@ async function katakanaToKanji(katakanaArr) {
     result[count++] = kanjiCharactersArr;
   }
 
+  console.log("katakana to kanji: ", result);
+
   return result;
 }
 
@@ -75,7 +77,7 @@ async function getKanjiDefinitions(generatedKanjiObj) {
 
   for (const key in generatedKanjiObj) {
     const definitionArr = [];
-    
+
     for (const kanji of generatedKanjiObj[key]) {
       const kanjiResponseObj = await fetch(
         `https://kanjialive-api.p.rapidapi.com/api/public/kanji/${kanji}`,
@@ -170,30 +172,30 @@ const combineKatakanaNwithPrevLetter = (katakana) => {
   if (katakana.includes("ン")) {
     const indexKatakanaN = katakana.indexOf("ン");
     const katakanaN = katakana[indexKatakanaN];
-    const preLetter = katakana[indexKatakanaN-1];
+    const preLetter = katakana[indexKatakanaN - 1];
     const combineTwoLetters = preLetter + katakanaN;
-    katakana.splice(indexKatakanaN-1, 2, combineTwoLetters);
+    katakana.splice(indexKatakanaN - 1, 2, combineTwoLetters);
   }
   return katakana;
-}
+};
 
 // Function to combine hiragana "ん" with previous character
 const combineHiraganaNwithPrevLetter = (hiragana) => {
   if (hiragana.includes("ん")) {
     const indexHiraganaN = hiragana.indexOf("ん");
     const hiraganaN = hiragana[indexHiraganaN];
-    const preLetter = hiragana[indexHiraganaN-1];
+    const preLetter = hiragana[indexHiraganaN - 1];
     const combineTwoLetters = preLetter + hiraganaN;
-    hiragana.splice(indexHiraganaN-1, 2, combineTwoLetters);
+    hiragana.splice(indexHiraganaN - 1, 2, combineTwoLetters);
   }
   return hiragana;
-}
+};
 
 // Function to check if input value is Katakana
 const isKatakana = (inputValue) => {
-    const katakanaReg = /^[ァ-ンヴー]*$/;
-    return katakanaReg.test(inputValue);
-}
+  const katakanaReg = /^[ァ-ンヴー]*$/;
+  return katakanaReg.test(inputValue);
+};
 
 // *** helper functions until here *** //
 
@@ -203,18 +205,20 @@ app.get("/api/kanji/", async (req, res) => {
   const katakanaTemp = wanakana.toKatakana(inputValue);
   const katakana = convertToBigKatakana(katakanaTemp); // Converts small katakana to a big one. e.g.) "ッ"　→ "ツ"
   const katakanaArrTemp = katakana.split("");
-  const katakanaArr = combineKatakanaNwithPrevLetter(katakanaArrTemp);   // Combine "ン" with its previous character. e.g.) ["ア", "ン"] → ["アン"]
+  const katakanaArr = combineKatakanaNwithPrevLetter(katakanaArrTemp); // Combine "ン" with its previous character. e.g.) ["ア", "ン"] → ["アン"]
 
   let furiganaArr;
 
   if (isKatakana(inputValue)) {
-    furiganaArr = combineHiraganaNwithPrevLetter((wanakana.toHiragana(katakanaTemp)).split(""));
+    furiganaArr = combineHiraganaNwithPrevLetter(
+      wanakana.toHiragana(katakanaTemp).split("")
+    );
   } else {
     furiganaArr = combineHiraganaNwithPrevLetter(furigana.split("")); // If hiragana "ん" is included, combine hiragana "ん" with previous character
   }
-  
+
   const romajiArr = furiganaArr.map((furigana) => wanakana.toRomaji(furigana));
-  
+
   const generatedKanjiObj = await katakanaToKanji(katakanaArr);
   const generatedDefinitionObj = await getKanjiDefinitions(generatedKanjiObj);
 
@@ -229,8 +233,8 @@ app.get("/api/kanji/", async (req, res) => {
 
   res.status(200).send(kanjiData);
 
-   // Insert data to database
-   for (let i = 0; i < kanjiData.length; i++) {
+  // Insert data to database
+  for (let i = 0; i < kanjiData.length; i++) {
     const kanjiName = kanjiData[i]["kanjiName"];
     await knex("kanji").insert({
       kanji: kanjiName,
@@ -238,7 +242,6 @@ app.get("/api/kanji/", async (req, res) => {
       romaji: wanakana.toRomaji(furigana),
     });
   }
-
 });
 
 app.get("/api/favorite", async (req, res) => {
@@ -246,17 +249,21 @@ app.get("/api/favorite", async (req, res) => {
 
   if (favorite) {
     await knex("favorite").insert({ kanji: favorite });
-    const countObj = await knex("favorite").where({kanji: favorite}).count("kanji");
+    const countObj = await knex("favorite")
+      .where({ kanji: favorite })
+      .count("kanji");
     const count = countObj[0]["count"];
     if (count == 1) {
-      res.status(200).send(`You're the first person who selected ${favorite} !`);
+      res
+        .status(200)
+        .send(`You're the first person who selected ${favorite} !`);
     } else {
       res.status(200).send(`${count} people have chosen ${favorite} !`);
     }
   }
 
-  res.status(202).send()
-})
+  res.status(202).send();
+});
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
