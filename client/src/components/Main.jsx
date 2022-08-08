@@ -4,6 +4,8 @@ import Options from "./Options";
 // import { Fireworks } from "fireworks/lib/react";
 import LoadingSpinner from "./LoadingSpinner";
 
+// TODO render a favourites page
+
 const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
   let fxProps = {
     colors: ["#ffc95e", "#fe5f55", "#5b5f97"],

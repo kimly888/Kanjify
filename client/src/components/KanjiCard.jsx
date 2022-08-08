@@ -46,7 +46,8 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
         ))}
       </div>
       <div className="links-wrapper">
-        <p className="links-text">Add to favourites +</p>
+        {/* TODO add onClick function to save to favourites! local storage first */}
+        <p className="links-text">+ Add to Favourites</p>
       </div>
     </article>
   );
