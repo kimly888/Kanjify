@@ -33,17 +33,9 @@ $ npm install express knex wanakana
 ```
 
 Then, set up your local database.
-- PostgreSQL
-
-In psql,
-```sql
-CREATE DATABASE kanjify;
-\c kanjify
-CREATE TABLE kanji (
-id SERIAL PRIMARY KEY,
-kanji VARCHAR,
-furigana VARCHAR,
-romaji VARCHAR);
+- `server/db`, run
+```shell
+knex migrate:latest
 ```
 
 In `Kanjify/server/db`, create `.env.local` file. Write information below.
