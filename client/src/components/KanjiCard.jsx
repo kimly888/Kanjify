@@ -3,15 +3,30 @@ import KanjiCharacter from "./KanjiCharacter";
 import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
 
 const KanjiCard = ({ kanjiName, eachKanjiData }) => {
-
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(kanjiName);
     alert("Copied " + kanjiName + " !");
   };
 
   return (
-    <article className="kanji-card" onClick={copyToClipboard} >
-      
+    <article className="kanji-card" onClick={copyToClipboard}>
+      <button>
+        <a
+          href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+          class="twitter-share-button"
+          data-size="large"
+          data-hashtags="kanjifyed"
+          data-show-count="false"
+        >
+          Tweet
+        </a>
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charset="utf-8"
+        ></script>
+      </button>
+
       <div className="kanji-name">
         {eachKanjiData.map((kanji) => (
           <KanjiCharacter
@@ -30,7 +45,6 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
           />
         ))}
       </div>
-
     </article>
   );
 };
