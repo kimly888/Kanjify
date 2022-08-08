@@ -35,9 +35,13 @@ $ npm install express knex wanakana
 ```
 
 Then, set up your local database.
+Create a local Postgres database called 'kanjify'.
+```SQL
+CREATE DATABASE kanjify;
+```
 In `server/db`, run
 ```shell
-knex migrate:latest
+$ knex migrate:latest
 ```
 Create `.env.local` file in `server/db`. Write information below.
 
