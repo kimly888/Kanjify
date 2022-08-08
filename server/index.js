@@ -189,19 +189,30 @@ const combineHiraganaNwithPrevLetter = (hiragana) => {
   return hiragana;
 }
 
+// Function to check if input value is Katakana
+const isKatakana = (inputValue) => {
+    const katakanaReg = /^[ァ-ンヴー]*$/;
+    return katakanaReg.test(inputValue);
+}
+
 // *** helper functions until here *** //
 
 app.get("/api/kanji/", async (req, res) => {
   const { input: inputValue } = req.query;
-  const furigana = wanakana.toKana(inputValue);
+  const furigana = wanakana.toHiragana(inputValue);
   const katakanaTemp = wanakana.toKatakana(inputValue);
   const katakana = convertToBigKatakana(katakanaTemp); // Converts small katakana to a big one. e.g.) "ッ"　→ "ツ"
   const katakanaArrTemp = katakana.split("");
   const katakanaArr = combineKatakanaNwithPrevLetter(katakanaArrTemp);   // Combine "ン" with its previous character. e.g.) ["ア", "ン"] → ["アン"]
 
   let furiganaArr;
-  furiganaArr = combineHiraganaNwithPrevLetter(furigana.split(""));
-  console.log(furiganaArr)
+
+  if (isKatakana(inputValue)) {
+    furiganaArr = combineHiraganaNwithPrevLetter((wanakana.toHiragana(katakanaTemp)).split(""));
+  } else {
+    furiganaArr = combineHiraganaNwithPrevLetter(furigana.split("")); // If hiragana "ん" is included, combine hiragana "ん" with previous character
+  }
+  
   const romajiArr = furiganaArr.map((furigana) => wanakana.toRomaji(furigana));
   
   const generatedKanjiObj = await katakanaToKanji(katakanaArr);
