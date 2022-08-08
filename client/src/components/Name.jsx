@@ -1,7 +1,13 @@
 import "./Name.css";
 import React, { useState } from "react";
 
-const Name = ({ isActive, setIsActive, isLoading, setIsLoading, setKanjiData }) => {
+const Name = ({
+  isActive,
+  setIsActive,
+  isLoading,
+  setIsLoading,
+  setKanjiData,
+}) => {
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -34,7 +40,7 @@ const Name = ({ isActive, setIsActive, isLoading, setIsLoading, setKanjiData }) 
       onSubmit={onSubmitForm}
       method="GET"
       style={{
-        marginBottom: isActive ? "30rem" : "0",
+        marginBottom: isActive ? "20rem" : "10rem",
         transition: "all 1s",
       }}
     >
