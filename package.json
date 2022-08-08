@@ -3,7 +3,9 @@
     "dotenv": "^16.0.1",
     "fireworks": "^2.2.7",
     "knex": "^2.2.0",
-    "pg": "^8.7.3"
+    "node-fetch": "^2.6.7",
+    "pg": "^8.7.3",
+    "wanakana": "^5.0.2"
   },
   "scripts": {
     "start": "node server/index.js",
