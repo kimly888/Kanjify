@@ -22,6 +22,8 @@ const Main = ({
     }),
   };
 
+  console.log(kanjiData);
+
   if (isFavourites) {
     return (
       <section
@@ -32,12 +34,12 @@ const Main = ({
         }}
       >
         {favourites.map((fave) => {
-          console.log(fave);
           return (
             <KanjiCard
               eachKanjiData={fave}
               favourites={favourites}
               setFavourites={setFavourites}
+              isFavourites={isFavourites}
             />
           );
         })}
