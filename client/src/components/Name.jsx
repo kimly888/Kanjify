@@ -38,6 +38,10 @@ const Name = ({
   };
 
   const handleClick = () => {
+    if (name.trim() === "") {
+      alert("Please enter a letter");
+      !isLoading ? isLoading(true) : isLoading(false);
+    }
     setIsActive(true);
   };
 
