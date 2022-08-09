@@ -38,6 +38,7 @@ const Main = ({
               eachKanjiData={fave}
               favourites={favourites}
               setFavourites={setFavourites}
+              isFavourites={isFavourites}
             />
           );
         })}

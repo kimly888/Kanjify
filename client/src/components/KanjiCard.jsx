@@ -3,13 +3,23 @@ import KanjiCharacter from "./KanjiCharacter";
 import { useState } from "react";
 import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
 
-const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
+const KanjiCard = ({
+  kanjiName,
+  eachKanjiData,
+  favourites,
+  setFavourites,
+  isFavourites,
+}) => {
   const [isSaved, setIsSaved] = useState(false);
 
   const saveFavourite = async () => {
     if (!isSaved) {
+      // update favourites and toggle saved state for this card
       setFavourites((current) => [...current, eachKanjiData]);
+      // render single card as favourite if saved
       setIsSaved(true);
+      // add favourites to local storage
+      localStorage.setItem(favourites);
     }
   };
 
@@ -34,10 +44,12 @@ const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
       </div>
       <div className="links-wrapper">
         <p
-          className={isSaved ? "links-text-saved" : "links-text"}
+          className={
+            isSaved || isFavourites ? "links-text-saved" : "links-text"
+          }
           onClick={saveFavourite}
         >
-          {isSaved ? "Added" : "Add to Favourites"}
+          {isSaved || isFavourites ? "Added" : "Add to Favourites"}
         </p>
 
         <a
