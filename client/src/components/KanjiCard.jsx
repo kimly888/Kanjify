@@ -41,7 +41,7 @@ const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
         </p>
 
         <a
-          href={`https://twitter.com/intent/tweet?text=OMG, I can't believe my name in Japanese is ${kanjiName}!`}
+          href={`https://twitter.com/intent/tweet?text=My name in Japanese is ${kanjiName}! Check out Kanjify.com to get yours!`}
           className="links-text"
           data-size="large"
           data-hashtags="kanjifyed"
