@@ -72,8 +72,11 @@ const Name = ({
         🪄
       </button>
       {/* placeholder for favourites */}
-      <p className="favourites" onClick={handleFavourites}>
-        Toggle Favourites
+      <p
+        className={isFavourites ? "search" : "favourites"}
+        onClick={handleFavourites}
+      >
+        {isFavourites ? "Toggle Search" : "Toggle Favourites"}
       </p>
     </form>
   );
