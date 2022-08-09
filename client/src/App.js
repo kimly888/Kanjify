@@ -19,6 +19,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
 
+  // MVP not using local storage
   // useEffect(() => {
   //   if (favourites.length !== 0) {
   //     // log
