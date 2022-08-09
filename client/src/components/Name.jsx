@@ -20,9 +20,7 @@ const Name = ({
     try {
       setIsLoading(true);
       const response = await fetch(
-        //  Switched to HOME_API for development
-        // `https://kanjify-server-v2.herokuapp.com/api/kanji/?input=${name}`,
-        `${HOME_API}api/kanji/?input=${name}`,
+        `https://kanjify-server-v2.herokuapp.com/api/kanji/?input=${name}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -41,7 +39,6 @@ const Name = ({
     setIsActive(true);
   };
 
-  // toggle on click
   const handleFavourites = () => {
     !isFavourites ? setIsFavourites(true) : setIsFavourites(false);
     setIsActive(true);
