@@ -2,20 +2,21 @@ import "./KanjiCard.css";
 import KanjiCharacter from "./KanjiCharacter";
 import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
 
-const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
-  // const copyToClipboard = async () => {
-  //   await navigator.clipboard.writeText(kanjiName);
-  //   alert("Copied " + kanjiName + " !");
-  // };
+const KanjiCard = ({ kanjiName, eachKanjiData }) => {
+  let str = `${eachKanjiData[0].hiragana}=${eachKanjiData[0].character} = ${eachKanjiData[0].definition}`;
 
-  const saveFavourite = async () => {
-    // Set state in App.js
-    setFavourites((values) => [...values, eachKanjiData]);
+  // + kanji.romanji, kanji.character, kanji.definition;
+
+  const copyToClipboard = async () => {
+    await navigator.clipboard.writeText(kanjiName);
+    alert("Copied " + kanjiName + " !");
   };
-
+  // TODO update function to save to favourites! local storage first...
+  const saveFavourite = () => {
+    alert("Saved!");
+  };
   return (
-    // <article className="kanji-card" onClick={copyToClipboard}>
-    <article className="kanji-card">
+    <article className="kanji-card" onClick={copyToClipboard}>
       <div className="kanji-name">
         {eachKanjiData.map((kanji) => (
           <KanjiCharacter
@@ -25,7 +26,6 @@ const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
           />
         ))}
       </div>
-
       <div className="kanji-name-info">
         {eachKanjiData.map((kanji) => (
           <KanjiCharacterDefinition
@@ -39,7 +39,7 @@ const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
           Add to Favourites
         </p>
         <a
-          href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+          href={`https://twitter.com/intent/tweet?text=${str}`}
           className="links-text"
           data-size="large"
           data-hashtags="kanjifyed"
