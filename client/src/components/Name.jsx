@@ -21,7 +21,7 @@ const Name = ({
       setIsLoading(true);
       const response = await fetch(
         //  Switched to HOME_API for development
-        // `https://kanjify-server.herokuapp.com/api/kanji/?input=${name}`,
+        // `https://kanjify-server-v2.herokuapp.com/api/kanji/?input=${name}`,
         `${HOME_API}api/kanji/?input=${name}`,
         {
           method: "GET",
