@@ -9,6 +9,7 @@ import LoadingSpinner from "./LoadingSpinner";
 const Main = ({
   isActive,
   kanjiData,
+  isFavourites,
   favourites,
   setFavourites,
   isLoading,
@@ -23,37 +24,63 @@ const Main = ({
     }),
   };
 
-  return (
-    <section
-      className="main-container"
-      style={{
-        width: isActive ? "50%" : "0",
-        transition: "width 1s",
-      }}
-    >
-      {/* {isActive && <Fireworks {...fxProps} />} */}
-      {isLoading ? (
-        <LoadingSpinner />
-      ) : (
-        kanjiData.map((name) => {
+  console.log("KanjiData in Main", kanjiData);
+
+  if (isFavourites) {
+    return (
+      <section
+        className="main-container"
+        style={{
+          width: isActive ? "50%" : "0",
+          transition: "width 1s",
+        }}
+      >
+        {favourites.map((fave) => {
+          console.log(fave);
           return (
             <KanjiCard
-              kanjiName={name.kanjiName}
-              eachKanjiData={name.eachKanji}
+              kanjiName={fave.kanjiName}
+              eachKanjiData={fave.eachKanji}
               favourites={favourites}
               setFavourites={setFavourites}
             />
           );
-        })
-      )}
+        })}
+      </section>
+    );
+  } else if (!isFavourites) {
+    return (
+      <section
+        className="main-container"
+        style={{
+          width: isActive ? "50%" : "0",
+          transition: "width 1s",
+        }}
+      >
+        {/* {isActive && <Fireworks {...fxProps} />} */}
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          kanjiData.map((name) => {
+            return (
+              <KanjiCard
+                kanjiName={name.kanjiName}
+                eachKanjiData={name.eachKanji}
+                favourites={favourites}
+                setFavourites={setFavourites}
+              />
+            );
+          })
+        )}
 
-      {isLoading ? (
-        <span></span>
-      ) : (
-        <Options kanjiData={kanjiData} isSubmitted={isSubmitted} />
-      )}
-    </section>
-  );
+        {isLoading ? (
+          <span></span>
+        ) : (
+          <Options kanjiData={kanjiData} isSubmitted={isSubmitted} />
+        )}
+      </section>
+    );
+  }
 };
 
 export default Main;

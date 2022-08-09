@@ -9,22 +9,39 @@ const HOME_API = "http://localhost:4000/";
 function App() {
   const [kanjiData, setKanjiData] = useState([]);
 
-  // added favourites
+  // favourites state
   const [favourites, setFavourites] = useState([]);
-  const [isFavourites, setIsFavourites] = useState(false);
+  const [storedFavourites, setStoredFavourites] = useState([]);
 
+  // toggle states
+  const [isFavourites, setIsFavourites] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
 
-  // getItem(favourite[0]) === array of x objects
   useEffect(() => {
     if (favourites.length !== 0) {
+      // log
       console.log("useEffect running to save local storage");
-      localStorage.setItem("favourite", JSON.stringify(favourites));
 
-      // returns array of arrays of kanji objects
-      console.log(JSON.parse(localStorage.getItem("favourite")));
+      // format object to store
+      const kanjiObject = { eachKanji: favourites[0] };
+
+      // if exists, update; if not, initialise
+      const storedData = JSON.parse(localStorage.getItem("kanjiData"));
+      console.log("From local storage", storedData);
+
+      //
+      if (storedData) {
+        storedData.push(kanjiObject);
+        localStorage.setItem("kanjiData", JSON.stringify(storedData));
+        setStoredFavourites(storedData);
+        console.log("storedFavourites State: ", storedFavourites);
+      } else {
+        localStorage.setItem("kanjiData", JSON.stringify([kanjiObject]));
+        setStoredFavourites([kanjiObject]);
+        console.log("storedFavourites State: ", storedFavourites);
+      }
     }
   }, [favourites]);
 
@@ -42,7 +59,8 @@ function App() {
       <Main
         isActive={isActive}
         isLoading={isLoading}
-        kanjiData={kanjiData}
+        kanjiData={isFavourites ? storedFavourites : kanjiData}
+        isFavourites={isFavourites}
         favourites={favourites}
         setFavourites={setFavourites}
         isSubmitted={isSubmitted}

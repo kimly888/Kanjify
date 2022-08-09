@@ -2,21 +2,22 @@ import "./KanjiCard.css";
 import KanjiCharacter from "./KanjiCharacter";
 import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
 
-const KanjiCard = ({ kanjiName, eachKanjiData }) => {
+const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
   let str = `${eachKanjiData[0].hiragana}=${eachKanjiData[0].character} = ${eachKanjiData[0].definition}`;
 
-  // + kanji.romanji, kanji.character, kanji.definition;
+  // const copyToClipboard = async () => {
+  //   await navigator.clipboard.writeText(kanjiName);
+  //   alert("Copied " + kanjiName + " !");
+  // };
 
-  const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(kanjiName);
-    alert("Copied " + kanjiName + " !");
+  const saveFavourite = async () => {
+    // Set state in App.js
+    setFavourites((values) => [...values, eachKanjiData]);
   };
-  // TODO update function to save to favourites! local storage first...
-  const saveFavourite = () => {
-    alert("Saved!");
-  };
+
   return (
-    <article className="kanji-card" onClick={copyToClipboard}>
+    // <article className="kanji-card" onClick={copyToClipboard}>
+    <article className="kanji-card">
       <div className="kanji-name">
         {eachKanjiData.map((kanji) => (
           <KanjiCharacter
