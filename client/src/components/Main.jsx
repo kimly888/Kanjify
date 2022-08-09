@@ -68,11 +68,12 @@ const Main = ({
           })
         )}
 
-        {isLoading ? (
+        {/* currently unused */}
+        {/* {isLoading ? (
           <span></span>
         ) : (
           <Options kanjiData={kanjiData} isSubmitted={isSubmitted} />
-        )}
+        )} */}
       </section>
     );
   }

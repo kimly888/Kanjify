@@ -12,6 +12,7 @@
   transition: all 0.3s;
   cursor: pointer;
   animation: fadeIn 1s;
+  margin-bottom: 24px;
 }
 
 @keyframes fadeIn {
@@ -93,4 +94,12 @@
   font-size: 16px;
   font-weight: bold;
   color: #444;
+}
+
+.links-text-saved {
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fe5f55;
 }

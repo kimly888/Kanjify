@@ -49,3 +49,12 @@ button:active {
   font-size: 18px;
   font-family: "Lora", serif;
 }
+
+.search {
+  color: #fe5f55;
+  cursor: pointer;
+  text-align: right;
+  padding-top: 12px;
+  font-size: 18px;
+  font-family: "Lora", serif;
+}

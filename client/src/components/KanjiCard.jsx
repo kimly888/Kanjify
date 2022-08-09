@@ -1,11 +1,16 @@
 import "./KanjiCard.css";
 import KanjiCharacter from "./KanjiCharacter";
+import { useState } from "react";
 import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
 
 const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
+  const [isSaved, setIsSaved] = useState(false);
+
   const saveFavourite = async () => {
-    console.log("eachKanjiData", eachKanjiData);
-    setFavourites((current) => [...current, eachKanjiData]);
+    if (!isSaved) {
+      setFavourites((current) => [...current, eachKanjiData]);
+      setIsSaved(true);
+    }
   };
 
   return (
@@ -28,12 +33,15 @@ const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
         ))}
       </div>
       <div className="links-wrapper">
-        <p className="links-text" onClick={saveFavourite}>
-          Add to Favourites
+        <p
+          className={isSaved ? "links-text-saved" : "links-text"}
+          onClick={saveFavourite}
+        >
+          {isSaved ? "Added" : "Add to Favourites"}
         </p>
 
         <a
-          href={`https://twitter.com/intent/tweet?text=OMG, I can't believe my name in Japanese is ${kanjiName}!`}
+          href={`https://twitter.com/intent/tweet?text=My name in Japanese is ${kanjiName}! Check out Kanjify.com to get yours!`}
           className="links-text"
           data-size="large"
           data-hashtags="kanjifyed"
