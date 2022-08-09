@@ -42,8 +42,10 @@ const Name = ({
   };
 
   // toggle on click
-  const handleFavourites = () =>
+  const handleFavourites = () => {
     !isFavourites ? setIsFavourites(true) : setIsFavourites(false);
+    setIsActive(true);
+  };
 
   return (
     <form

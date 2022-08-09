@@ -3,9 +3,9 @@ import KanjiCharacter from "./KanjiCharacter";
 import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
 
 const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
-  let str = `${eachKanjiData[0].hiragana}=${eachKanjiData[0].character} = ${eachKanjiData[0].definition}`;
-  let str1 = `${eachKanjiData[1].hiragana}=${eachKanjiData[1].character} = ${eachKanjiData[1].definition}`;
-  let str2 = `${eachKanjiData[2].hiragana}=${eachKanjiData[2].character} = ${eachKanjiData[2].definition}`;
+  // let str = `${eachKanjiData[0].hiragana}=${eachKanjiData[0].character} = ${eachKanjiData[0].definition}`;
+  // let str1 = `${eachKanjiData[1].hiragana}=${eachKanjiData[1].character} = ${eachKanjiData[1].definition}`;
+  // let str2 = `${eachKanjiData[2].hiragana}=${eachKanjiData[2].character} = ${eachKanjiData[2].definition}`;
 
   // const copyToClipboard = async () => {
   //   await navigator.clipboard.writeText(kanjiName);
@@ -13,8 +13,8 @@ const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
   // };
 
   const saveFavourite = async () => {
-    // Set state in App.js
-    setFavourites((values) => [...values, eachKanjiData]);
+    console.log("eachKanjiData", eachKanjiData);
+    setFavourites((current) => [...current, eachKanjiData]);
   };
 
   return (
@@ -41,7 +41,7 @@ const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
         <p className="links-text" onClick={saveFavourite}>
           Add to Favourites
         </p>
-        <a
+        {/* <a
           href={`https://twitter.com/intent/tweet?text=${str}, 意味(${str1}), 意味(${str2})`}
           className="links-text"
           data-size="large"
@@ -49,7 +49,7 @@ const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
           data-show-count="false"
         >
           | Tweet
-        </a>
+        </a> */}
         <script
           async
           src="https://platform.twitter.com/widgets.js"

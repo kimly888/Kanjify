@@ -4,8 +4,6 @@ import Options from "./Options";
 // import { Fireworks } from "fireworks/lib/react";
 import LoadingSpinner from "./LoadingSpinner";
 
-// TODO render a favourites page
-
 const Main = ({
   isActive,
   kanjiData,
@@ -24,8 +22,6 @@ const Main = ({
     }),
   };
 
-  console.log("KanjiData in Main", kanjiData);
-
   if (isFavourites) {
     return (
       <section
@@ -39,8 +35,7 @@ const Main = ({
           console.log(fave);
           return (
             <KanjiCard
-              kanjiName={fave.kanjiName}
-              eachKanjiData={fave.eachKanji}
+              eachKanjiData={fave}
               favourites={favourites}
               setFavourites={setFavourites}
             />
