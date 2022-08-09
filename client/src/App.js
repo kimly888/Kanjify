@@ -12,41 +12,11 @@ function App() {
   // favourites state
   const [favourites, setFavourites] = useState([]);
   const [isFavourites, setIsFavourites] = useState(false);
-  // const [storedFavourites, setStoredFavourites] = useState([]);
 
   // toggle states
   const [isActive, setIsActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isSubmitted, setSubmit] = useState(false);
-
-  // MVP not using local storage
-  // useEffect(() => {
-  //   if (favourites.length !== 0) {
-  //     // log
-  //     console.log("useEffect running to save local storage");
-
-  //     // format object to store
-  //     const kanjiObject = { eachKanji: favourites[0] };
-
-  //     // if exists, update; if not, initialise
-  //     const storedData = JSON.parse(localStorage.getItem("kanjiData"));
-  //     console.log("From local storage", storedData);
-
-  //     if (storedData) {
-  //       storedData.push(kanjiObject);
-  //       localStorage.setItem("kanjiData", JSON.stringify(storedData));
-  //       setStoredFavourites(storedData);
-  //       console.log("storedFavourites State: ", storedFavourites);
-  //     } else {
-  //       localStorage.setItem("kanjiData", JSON.stringify([kanjiObject]));
-  //       setStoredFavourites([kanjiObject]);
-  //       console.log("storedFavourites State: ", storedFavourites);
-  //     }
-  //   }
-  // }, [favourites]);
-
-  console.log("kanjiData: ", kanjiData);
-  console.log("favourties: ", favourites);
+  const [isSubmitted, setSubmitted] = useState(false);
 
   return (
     <div className="App">

@@ -12,14 +12,12 @@ const KanjiCard = ({
 }) => {
   const [isSaved, setIsSaved] = useState(false);
 
-  const saveFavourite = async () => {
+  const saveFavourite = () => {
     if (!isSaved) {
       // update favourites and toggle saved state for this card
       setFavourites((current) => [...current, eachKanjiData]);
       // render single card as favourite if saved
       setIsSaved(true);
-      // add favourites to local storage
-      localStorage.setItem(favourites);
     }
   };
 
