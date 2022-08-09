@@ -17,6 +17,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setSubmit] = useState(false);
 
+  // getItem(favourite[0]) === array of x objects
+  useEffect(() => {
+    console.log("test when useEffect runs for saving local storage");
+    localStorage.setItem("favourite:", JSON.stringify(favourites[0]));
+  }, [favourites]);
+
   return (
     <div className="App">
       <Header

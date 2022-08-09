@@ -9,16 +9,8 @@ const KanjiCard = ({ kanjiName, eachKanjiData, favourites, setFavourites }) => {
   // };
 
   const saveFavourite = async () => {
-    // eachKanjiData to access current data
-    // array of two or more objects
-    console.log(eachKanjiData);
-
-    // Set state in App.js - OK
+    // Set state in App.js
     setFavourites((values) => [...values, eachKanjiData]);
-
-    // TODO add state toggle to render favourites when clicked
-    // maybe isFavourites and boolean - pass into Main...
-    // then try saving to database...by user would be after that...
   };
 
   return (
