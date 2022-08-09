@@ -19,8 +19,13 @@ function App() {
 
   // getItem(favourite[0]) === array of x objects
   useEffect(() => {
-    console.log("test when useEffect runs for saving local storage");
-    localStorage.setItem("favourite:", JSON.stringify(favourites[0]));
+    if (favourites.length !== 0) {
+      console.log("useEffect running to save local storage");
+      localStorage.setItem("favourite", JSON.stringify(favourites));
+
+      // returns array of arrays of kanji objects
+      console.log(JSON.parse(localStorage.getItem("favourite")));
+    }
   }, [favourites]);
 
   return (
