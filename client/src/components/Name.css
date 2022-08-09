@@ -43,6 +43,7 @@ button:active {
 /* LEGACY PROJECT - ADDED CSS */
 
 .favourites {
+  cursor: pointer;
   text-align: right;
   padding-top: 12px;
   font-size: 18px;
