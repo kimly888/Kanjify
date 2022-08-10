@@ -23,6 +23,12 @@ const Main = ({
     }),
   };
 
+  // const storedFaves = JSON.parse(localStorage.getItem("favourites"));
+  // // remove nulls
+  // console.log("storage from Main: ", storedFaves);
+  // const storedFavesFormatted = storedFaves.filter((el) => el !== null);
+  // console.log("storage from Main, formatted: ", storedFavesFormatted);
+
   // testing
   console.log("kanjiData: ", kanjiData);
   console.log("favourites: ", favourites);
