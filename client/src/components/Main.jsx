@@ -22,7 +22,9 @@ const Main = ({
     }),
   };
 
-  console.log(kanjiData);
+  // testing
+  console.log("kanjiData: ", kanjiData);
+  console.log("favourites: ", favourites);
 
   if (isFavourites) {
     return (
