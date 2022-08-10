@@ -66,7 +66,7 @@ const Name = ({
         id="name"
         onChange={(event) => {
           if (event.target.value.includes(" ")) {
-            setName(event.trim());
+            setName(event.target.value.replace(/\s/g, ""));
           } else {
             setName(event.target.value);
           }
