@@ -35,9 +35,18 @@ const Name = ({
     }
   };
 
+  const [shake, setShake] = useState(false);
+
+  const animate = () => {
+    // Button begins to shake
+    setShake(true);
+    // Buttons stops to shake after 2 seconds
+    setTimeout(() => setShake(false), 500);
+  };
+
   const handleClick = () => {
     if (name.length === 0) {
-      alert("Please enter a name!");
+      animate();
       !isLoading ? isLoading(true) : isLoading(false);
     }
     setIsActive(true);
@@ -51,6 +60,7 @@ const Name = ({
   return (
     <form
       onSubmit={onSubmitForm}
+      className={shake ? `shake` : null}
       method="GET"
       style={{
         marginBottom: isActive ? "20rem" : "10rem",
