@@ -43,7 +43,7 @@ const Name = ({
     // Button begins to shake
     setShake(true);
     // Buttons stops to shake after 2 seconds
-    setTimeout(() => setShake(false), 1000);
+    setTimeout(() => setShake(false), 500);
   };
 
   const handleClick = () => {
