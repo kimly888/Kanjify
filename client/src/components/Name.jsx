@@ -37,9 +37,18 @@ const Name = ({
     }
   };
 
+  const [shake, setShake] = useState(false);
+
+  const animate = () => {
+    // Button begins to shake
+    setShake(true);
+    // Buttons stops to shake after 2 seconds
+    setTimeout(() => setShake(false), 1000);
+  };
+
   const handleClick = () => {
     if (name.length === 0) {
-      alert("Please enter a name!");
+      animate();
       !isLoading ? isLoading(true) : isLoading(false);
     }
     setIsActive(true);
@@ -72,7 +81,12 @@ const Name = ({
           }
         }}
       />
-      <button type="submit" onClick={handleClick} disabled={isLoading}>
+      <button
+        type="submit"
+        onClick={handleClick}
+        className={shake ? `shake` : null}
+        disabled={isLoading}
+      >
         🪄
       </button>
       {/* placeholder for favourites */}
