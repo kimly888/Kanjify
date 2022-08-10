@@ -30,6 +30,9 @@ function App() {
       // 1. retrieve
       const storedFavourites = JSON.parse(localStorage.getItem("favourites"));
       // 2. add latest favourite to storedFavourites
+      storedFavourites.push(favourites[favourites.length - 1]);
+      // 3. update localStorage
+      localStorage.setItem("favourites", JSON.stringify(storedFavourites));
 
       // comparison for testing
       console.log("storedFavourites: ", storedFavourites); // Array of Objects
