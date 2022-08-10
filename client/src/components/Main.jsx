@@ -3,6 +3,7 @@ import KanjiCard from "./KanjiCard";
 import Options from "./Options";
 // import { Fireworks } from "fireworks/lib/react";
 import LoadingSpinner from "./LoadingSpinner";
+import { useInsertionEffect } from "react";
 
 const Main = ({
   isActive,
