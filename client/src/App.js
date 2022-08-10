@@ -26,23 +26,17 @@ function App() {
       localStorage.getItem("favourites") === null &&
       favourites.length !== 0
     ) {
-      console.log("local storage empty, adding...");
       localStorage.setItem("favourites", JSON.stringify(favourites));
     } else {
-      console.log("local storage is not empty, updating...");
       // to prevent 'null' from being inserted
       if (favourites.length !== 0) {
         // 1. retrieve
         const storedFavourites = JSON.parse(localStorage.getItem("favourites"));
-        // 2. add latest favourite to storedFavourites
+        // 2. add latest
         storedFavourites.push(favourites[favourites.length - 1]);
-        // 3. update localStorage
+        // 3. update
         localStorage.setItem("favourites", JSON.stringify(storedFavourites));
-        console.log("storedFavourites: ", storedFavourites); // Array of Objects
       }
-      // comparison for testing
-      console.log("regularFavourites: ", favourites); // Array of Objects
-      console.log("latestFavourite: ", favourites[favourites.length - 1]); // Object
     }
   }, [favourites]);
 

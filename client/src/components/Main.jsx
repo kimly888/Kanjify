@@ -23,15 +23,12 @@ const Main = ({
     }),
   };
 
-  // const storedFaves = JSON.parse(localStorage.getItem("favourites"));
-  // // remove nulls
-  // console.log("storage from Main: ", storedFaves);
-  // const storedFavesFormatted = storedFaves.filter((el) => el !== null);
-  // console.log("storage from Main, formatted: ", storedFavesFormatted);
+  let storedFaves;
+  if (localStorage.getItem("favourites") !== null) {
+    storedFaves = JSON.parse(localStorage.getItem("favourites"));
+  }
 
-  // testing
-  console.log("kanjiData: ", kanjiData);
-  console.log("favourites: ", favourites);
+  const faveData = storedFaves ? storedFaves : favourites;
 
   if (isFavourites) {
     return (
@@ -42,7 +39,7 @@ const Main = ({
           transition: "width 1s",
         }}
       >
-        {favourites.map((fave) => {
+        {faveData.map((fave) => {
           return (
             <KanjiCard
               kanjiName={fave.kanjiName}
