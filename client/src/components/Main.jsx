@@ -3,6 +3,7 @@ import KanjiCard from "./KanjiCard";
 import Options from "./Options";
 // import { Fireworks } from "fireworks/lib/react";
 import LoadingSpinner from "./LoadingSpinner";
+import { useInsertionEffect } from "react";
 
 const Main = ({
   isActive,
@@ -22,7 +23,12 @@ const Main = ({
     }),
   };
 
-  console.log(kanjiData);
+  let storedFaves;
+  if (localStorage.getItem("favourites") !== null) {
+    storedFaves = JSON.parse(localStorage.getItem("favourites"));
+  }
+
+  const faveData = storedFaves ? storedFaves : favourites;
 
   if (isFavourites) {
     return (
@@ -33,10 +39,11 @@ const Main = ({
           transition: "width 1s",
         }}
       >
-        {favourites.map((fave) => {
+        {faveData.map((fave) => {
           return (
             <KanjiCard
-              eachKanjiData={fave}
+              kanjiName={fave.kanjiName}
+              eachKanjiData={fave.eachKanji}
               favourites={favourites}
               setFavourites={setFavourites}
               isFavourites={isFavourites}

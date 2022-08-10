@@ -15,7 +15,10 @@ const KanjiCard = ({
   const saveFavourite = () => {
     if (!isSaved) {
       // update favourites and toggle saved state for this card
-      setFavourites((current) => [...current, eachKanjiData]);
+      setFavourites((current) => [
+        ...current,
+        { kanjiName: kanjiName, eachKanji: eachKanjiData },
+      ]);
       // render single card as favourite if saved
       setIsSaved(true);
     }

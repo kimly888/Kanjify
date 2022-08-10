@@ -18,6 +18,28 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setSubmitted] = useState(false);
 
+  // ***** LOCAL STORAGE *****
+
+  // to run each time favourites is set
+  useEffect(() => {
+    if (
+      localStorage.getItem("favourites") === null &&
+      favourites.length !== 0
+    ) {
+      localStorage.setItem("favourites", JSON.stringify(favourites));
+    } else {
+      // to prevent 'null' from being inserted
+      if (favourites.length !== 0) {
+        // 1. retrieve
+        const storedFavourites = JSON.parse(localStorage.getItem("favourites"));
+        // 2. add latest
+        storedFavourites.push(favourites[favourites.length - 1]);
+        // 3. update
+        localStorage.setItem("favourites", JSON.stringify(storedFavourites));
+      }
+    }
+  }, [favourites]);
+
   return (
     <div className="App">
       <Header
