@@ -38,7 +38,8 @@ const Main = ({
         {favourites.map((fave) => {
           return (
             <KanjiCard
-              eachKanjiData={fave}
+              kanjiName={fave.kanjiName}
+              eachKanjiData={fave.eachKanji}
               favourites={favourites}
               setFavourites={setFavourites}
               isFavourites={isFavourites}
