@@ -63,6 +63,7 @@ const Name = ({
   return (
     <form
       onSubmit={onSubmitForm}
+      className={shake ? `shake` : null}
       method="GET"
       style={{
         marginBottom: isActive ? "20rem" : "10rem",
@@ -81,12 +82,7 @@ const Name = ({
           }
         }}
       />
-      <button
-        type="submit"
-        onClick={handleClick}
-        className={shake ? `shake` : null}
-        disabled={isLoading}
-      >
+      <button type="submit" onClick={handleClick} disabled={isLoading}>
         🪄
       </button>
       {/* placeholder for favourites */}
