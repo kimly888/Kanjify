@@ -7,6 +7,11 @@ Kanjify is here for you to give you a kanjified name.
 
 Try it out here: https://kanjify.herokuapp.com
 
+### Developers
+[Kurumi Muto](https://github.com/walnut07)
+[Kim Ly](https://github.com/Double0Asian)
+[Daiki Uema](https://github.com/cskejivic)
+
 ### Built with
 <img width="600" alt="picture of a list of our tech stack" src="https://user-images.githubusercontent.com/90857923/183324714-d879dacd-4638-44aa-9868-316cdf52eea4.png">
 
