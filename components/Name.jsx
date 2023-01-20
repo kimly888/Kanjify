@@ -15,18 +15,12 @@ const Name = ({
     event.preventDefault();
     try {
       setIsLoading(true);
-      const response = await fetch(
-        `http://localhost:3000/api/kanji/?input=${name}`,
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      const response = await fetch(`/api/kanji/?input=${name}`);
       const data = await response.json();
       setIsLoading(false);
       setKanjiData(data);
     } catch (err) {
-      setErrorMessage("Unable to fetch user list");
+      setErrorMessage("Unable to get your Kanji name...");
       setIsLoading(false);
     }
   };
