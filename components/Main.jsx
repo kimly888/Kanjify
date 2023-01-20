@@ -26,11 +26,12 @@ const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        kanjiData.map((name) => {
+        kanjiData.map((name, index) => {
           return (
             <KanjiCard
               kanjiName={name.kanjiName}
               eachKanjiData={name.eachKanji}
+              key={index}
             />
           );
         })

@@ -1,18 +1,21 @@
 // import "./Options.css";
 
-const Options = ({ kanjiData}) => {
-
+const Options = ({ kanjiData }) => {
   return (
-    <form action="https://kanjify-server.herokuapp.com/api/favorite" method="GET">
-        <label for="options">
-          <select name="options" id="options">
-            <option value="">--Choose your favorite--</option>
-            {kanjiData.map(name => {
-              return <option value={name.kanjiName}>{name.kanjiName}</option>
-            })}
-          </select>
-          <button type="submit">Submit</button>
-        </label>
+    <form action="/api/favorite" method="GET">
+      <label htmlFor="options">
+        <select name="options" id="options">
+          <option value="">--Choose your favorite--</option>
+          {kanjiData.map((name, index) => {
+            return (
+              <option value={name.kanjiName} key={index}>
+                {name.kanjiName}
+              </option>
+            );
+          })}
+        </select>
+        <button type="submit">Submit</button>
+      </label>
     </form>
   );
 };

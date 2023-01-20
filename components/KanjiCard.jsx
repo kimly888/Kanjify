@@ -11,20 +11,22 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
   return (
     <article className={styles.kanjiCard} onClick={copyToClipboard}>
       <div className={styles.kanjiName}>
-        {eachKanjiData.map((kanji) => (
+        {eachKanjiData.map((kanji, index) => (
           <KanjiCharacter
             character={kanji.character}
             hiragana={kanji.hiragana}
             romaji={kanji.romaji}
+            key={index}
           />
         ))}
       </div>
 
       <div className={styles.kanjiNameInfo}>
-        {eachKanjiData.map((kanji) => (
+        {eachKanjiData.map((kanji, index) => (
           <KanjiCharacterDefinition
             character={kanji.character}
             definition={kanji.definition}
+            key={index}
           />
         ))}
       </div>
