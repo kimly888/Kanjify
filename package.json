@@ -10,7 +10,8 @@
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "wanakana": "^5.0.2"
   },
   "scripts": {
     "dev": "next dev",
