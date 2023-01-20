@@ -11,7 +11,8 @@
     "react-dom": "latest",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
-    "wanakana": "^5.0.2"
+    "wanakana": "^5.0.2",
+    "fireworks": "^2.2.7"
   },
   "scripts": {
     "dev": "next dev",
