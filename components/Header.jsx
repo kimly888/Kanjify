@@ -1,10 +1,17 @@
-import "./Header.css";
+import styles from "./Header.module.css";
 import Name from "./Name";
 import React, { useState } from "react";
 
-const Header = ({ isActive, setIsActive, isLoading, setIsLoading, setKanjiData }) => {
+const Header = ({
+  isActive,
+  setIsActive,
+  isLoading,
+  setIsLoading,
+  setKanjiData,
+}) => {
   return (
     <header
+      className={"hero"}
       style={{
         width: isActive ? "50%" : "100%",
         transition: "all 1s",

@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap");
 
-header {
+.hero {
   position: relative;
   width: 50%;
   height: 100vh;

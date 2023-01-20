@@ -1,16 +1,16 @@
-form {
+.kanji-input {
   margin: 2rem 0;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   font-family: "Lora", serif;
 }
 
-#name,
-button {
+.name,
+.kanjify-button {
   font-size: 2rem;
 }
 
-#name {
+.name {
   outline: none;
   border: none;
   padding: 1rem 0;
@@ -19,23 +19,23 @@ button {
   font-family: "Lora", serif;
 }
 
-#name:focus {
+.name:focus {
   outline: 0.1rem solid black;
 }
 
-button {
+.kanjify-button {
   border: none;
   border-radius: 0 10px 10px 0;
   padding: 1rem;
-  background-color: #C62368;
+  background-color: #c62368;
   color: white;
   font-family: "Lora", serif;
 }
 
-button:hover {
+.kanjify-button:hover {
   background-color: #e82878;
 }
 
-button:active {
+.kanjify-button:active {
   background-color: #bc2263;
 }

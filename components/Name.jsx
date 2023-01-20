@@ -1,7 +1,12 @@
-import "./Name.css";
 import React, { useState } from "react";
 
-const Name = ({ isActive, setIsActive, isLoading, setIsLoading, setKanjiData }) => {
+const Name = ({
+  isActive,
+  setIsActive,
+  isLoading,
+  setIsLoading,
+  setKanjiData,
+}) => {
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -31,6 +36,7 @@ const Name = ({ isActive, setIsActive, isLoading, setIsLoading, setKanjiData }) 
 
   return (
     <form
+      className="kanji-input"
       onSubmit={onSubmitForm}
       method="GET"
       style={{
@@ -41,10 +47,15 @@ const Name = ({ isActive, setIsActive, isLoading, setIsLoading, setKanjiData }) 
       <input
         type="text"
         name="name"
-        id="name"
+        className="name"
         onChange={(event) => setName(event.target.value)}
       />
-      <button type="submit" onClick={handleClick} disabled={isLoading}>
+      <button
+        type="submit"
+        className="kanjify-button"
+        onClick={handleClick}
+        disabled={isLoading}
+      >
         🪄
       </button>
     </form>

@@ -1,4 +1,3 @@
-import "./Main.css";
 import KanjiCard from "./KanjiCard";
 import Options from "./Options";
 // import { Fireworks } from "fireworks/lib/react";
@@ -22,7 +21,6 @@ const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
         transition: "width 1s",
       }}
     >
-
       {/* {isActive && <Fireworks {...fxProps} />} */}
       {isLoading ? (
         <LoadingSpinner />
@@ -40,7 +38,7 @@ const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
       {isLoading ? (
         <span></span>
       ) : (
-        <Options kanjiData={kanjiData} isSubmitted={isSubmitted}/>
+        <Options kanjiData={kanjiData} isSubmitted={isSubmitted} />
       )}
     </section>
   );
