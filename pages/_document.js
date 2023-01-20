@@ -5,14 +5,11 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta charset="utf-8" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
         <meta
           name="description"
-          content="Web site created using create-react-app"
+          content="An app that finds your name in Japanese."
         />
         <meta property="og:title" content="Kanjify" key="title" />
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
       </Head>
       <body>
         <Main />
