@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta
           name="description"
           content="An app that finds your name in Japanese."

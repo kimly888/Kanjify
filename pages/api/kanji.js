@@ -1,13 +1,13 @@
 const wanakana = require("wanakana");
 import {
-  convertToBigKatakana,
-  combineKatakanaNwithPrevLetter,
-  combineHiraganaNwithPrevLetter,
-  isKatakana,
   katakanaToKanji,
   getKanjiDefinitions,
   combiner,
   getKanjiData,
+  convertToBigKatakana,
+  combineKatakanaNwithPrevLetter,
+  combineHiraganaNwithPrevLetter,
+  isKatakana,
 } from "../../lib/utils";
 
 export default async function (req, res) {

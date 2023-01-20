@@ -1,6 +1,5 @@
 import styles from "./Header.module.css";
 import Name from "./Name";
-import React, { useState } from "react";
 
 const Header = ({
   isActive,
