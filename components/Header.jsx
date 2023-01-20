@@ -1,5 +1,6 @@
 import styles from "./Header.module.css";
 import Name from "./Name";
+import { Fireworks } from "fireworks/lib/react";
 
 const Header = ({
   isActive,
@@ -8,6 +9,15 @@ const Header = ({
   setIsLoading,
   setKanjiData,
 }) => {
+  let fxProps = {
+    colors: ["#ffc95e", "#fe5f55", "#5b5f97"],
+    calc: (props, i) => ({
+      ...props,
+      x: (i + 1) * (window.innerWidth / 2) - (i + 1) * 100,
+      y: 200 + Math.random() * 100 - 50 + (i === 2 ? -10 : 0),
+    }),
+  };
+
   return (
     <header
       className={styles.hero}
@@ -20,6 +30,7 @@ const Header = ({
       <label className={styles.caption} htmlFor="name">
         Enter your name
       </label>
+
       <Name
         isActive={isActive}
         setIsActive={setIsActive}
@@ -27,6 +38,7 @@ const Header = ({
         isLoading={isLoading}
         setIsLoading={setIsLoading}
       />
+      {isActive && <Fireworks {...fxProps} />}
     </header>
   );
 };

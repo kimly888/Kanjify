@@ -1,19 +1,9 @@
 import KanjiCard from "./KanjiCard";
 import Options from "./Options";
-import { Fireworks } from "fireworks/lib/react";
 import LoadingSpinner from "./LoadingSpinner";
 import styles from "./Main.module.css";
 
 const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
-  let fxProps = {
-    colors: ["#ffc95e", "#fe5f55", "#5b5f97"],
-    calc: (props, i) => ({
-      ...props,
-      x: (i + 1) * (window.innerWidth / 2) - (i + 1) * 100,
-      y: 200 + Math.random() * 100 - 50 + (i === 2 ? -10 : 0),
-    }),
-  };
-
   return (
     <section
       className={styles.mainContainer}
@@ -22,7 +12,6 @@ const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
         transition: "width 1s",
       }}
     >
-      {isActive && <Fireworks {...fxProps} />}
       {isLoading ? (
         <LoadingSpinner />
       ) : (
