@@ -2,9 +2,9 @@ import styles from "./KanjiCard.module.css";
 
 const KanjiCharacterDefinition = ({ character, definition }) => {
   return (
-    <div className={styles.KanjiCharacterBreakdown}>
-      <h2 className={styles.KanjiCharacter}>{character}</h2>
-      <p className={styles.KanjiDefinition}>: {definition}</p>
+    <div className={styles.kanjiCharacterBreakdown}>
+      <h2 className={styles.kanjiCharacter}>{character}</h2>
+      <p className={styles.kanjiDefinition}>: {definition}</p>
     </div>
   );
 };
