@@ -11,14 +11,14 @@ const Header = ({
 }) => {
   return (
     <header
-      className={"hero"}
+      className={styles.hero}
       style={{
         width: isActive ? "50%" : "100%",
         transition: "all 1s",
       }}
     >
-      <h1 className="title">Kanjify</h1>
-      <label className="caption" htmlFor="name">
+      <h1 className={styles.title}>Kanjify</h1>
+      <label className={styles.caption} htmlFor="name">
         Enter your name
       </label>
       <Name

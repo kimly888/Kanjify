@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "./Name.module.css";
 
 const Name = ({
   isActive,
@@ -36,7 +37,7 @@ const Name = ({
 
   return (
     <form
-      className="kanji-input"
+      className={styles.kanjiInput}
       onSubmit={onSubmitForm}
       method="GET"
       style={{
@@ -47,12 +48,12 @@ const Name = ({
       <input
         type="text"
         name="name"
-        className="name"
+        className={styles.name}
         onChange={(event) => setName(event.target.value)}
       />
       <button
         type="submit"
-        className="kanjify-button"
+        className={styles.kanjifyButton}
         onClick={handleClick}
         disabled={isLoading}
       >

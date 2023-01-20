@@ -2,6 +2,7 @@ import KanjiCard from "./KanjiCard";
 import Options from "./Options";
 // import { Fireworks } from "fireworks/lib/react";
 import LoadingSpinner from "./LoadingSpinner";
+import styles from "./Main.module.css";
 
 const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
   let fxProps = {
@@ -15,7 +16,7 @@ const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
 
   return (
     <section
-      className="main-container"
+      className={styles.mainContainer}
       style={{
         width: isActive ? "50%" : "0",
         transition: "width 1s",

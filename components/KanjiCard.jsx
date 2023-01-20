@@ -1,3 +1,4 @@
+import styles from "./KanjiCard.module.css";
 import KanjiCharacter from "./KanjiCharacter";
 import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
 
@@ -8,8 +9,8 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
   };
 
   return (
-    <article className="kanji-card" onClick={copyToClipboard}>
-      <div className="kanji-name">
+    <article className={styles.kanjiCard} onClick={copyToClipboard}>
+      <div className={styles.kanjiName}>
         {eachKanjiData.map((kanji) => (
           <KanjiCharacter
             character={kanji.character}
@@ -19,7 +20,7 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
         ))}
       </div>
 
-      <div className="kanji-name-info">
+      <div className={styles.kanjiNameInfo}>
         {eachKanjiData.map((kanji) => (
           <KanjiCharacterDefinition
             character={kanji.character}

@@ -1,4 +1,4 @@
-.kanji-input {
+.kanjiInput {
   margin: 2rem 0;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -6,7 +6,7 @@
 }
 
 .name,
-.kanjify-button {
+.kanjifyButton {
   font-size: 2rem;
 }
 
@@ -23,7 +23,7 @@
   outline: 0.1rem solid black;
 }
 
-.kanjify-button {
+.kanjifyButton {
   border: none;
   border-radius: 0 10px 10px 0;
   padding: 1rem;
@@ -32,10 +32,10 @@
   font-family: "Lora", serif;
 }
 
-.kanjify-button:hover {
+.kanjifyButton:hover {
   background-color: #e82878;
 }
 
-.kanjify-button:active {
+.kanjifyButton:active {
   background-color: #bc2263;
 }
