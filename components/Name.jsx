@@ -26,7 +26,7 @@ const Name = ({
   };
 
   const handleClick = () => {
-    setIsActive(true);
+    if (name.length > 0) setIsActive(true);
   };
 
   return (
@@ -35,7 +35,7 @@ const Name = ({
       onSubmit={onSubmitForm}
       method="GET"
       style={{
-        marginBottom: isActive ? "30rem" : "0",
+        marginBottom: isActive ? "10%" : "0",
         transition: "all 1s",
       }}
     >
@@ -44,6 +44,7 @@ const Name = ({
         name="name"
         className={styles.name}
         onChange={(event) => setName(event.target.value)}
+        required
       />
       <button
         type="submit"
