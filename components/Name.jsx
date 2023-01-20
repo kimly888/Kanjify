@@ -15,7 +15,9 @@ const Name = ({
     event.preventDefault();
     try {
       setIsLoading(true);
-      const response = await fetch(`/api/kanji/?input=${name}`);
+      const response = await fetch(
+        `/api/kanji/?input=${name.replaceAll(" ", "")}`
+      );
       const data = await response.json();
       setIsLoading(false);
       setKanjiData(data);
