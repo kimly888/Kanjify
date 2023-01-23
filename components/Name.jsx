@@ -25,10 +25,12 @@ const Name = ({
         `api/translate/?input=${name}`
       );
       const translatedNameData = await translatedNameResponse.json();
+
       const response = await fetch(
-        `/api/kanji/?input=${translatedNameData.name}`
+        `/api/kanji/?input=${translatedNameData.name.replace(/[・ー]/g, "")}`
       );
       const data = await response.json();
+
       setIsLoading(false);
       setKanjiData(data);
     } catch (err) {
