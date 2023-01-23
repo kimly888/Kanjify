@@ -27,7 +27,7 @@ const Name = ({
       const translatedNameData = await translatedNameResponse.json();
 
       const response = await fetch(
-        `/api/kanji/?input=${translatedNameData.name.replace(/[・ー]/g, "")}`
+        `/api/kanji/?input=${translatedNameData.name.replace(/[・ーッ]/g, "")}`
       );
       const data = await response.json();
 
