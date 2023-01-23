@@ -26,11 +26,11 @@ const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
         })
       )}
 
-      {isLoading ? (
+      {/* {isLoading ? (
         <span></span>
       ) : (
         <Options kanjiData={kanjiData} isSubmitted={isSubmitted} />
-      )}
+      )} */}
     </section>
   );
 };
