@@ -35,8 +35,7 @@ export const katakanaToKanji = async (katakanaArr) => {
       {
         method: "GET",
         headers: {
-          "X-RapidAPI-Key":
-            "fb204f9fc6msh5fe937040b3b47fp1ec3cfjsn0a6c2ab1a027",
+          "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY,
           "X-RapidAPI-Host": "kanjialive-api.p.rapidapi.com",
         },
       }
@@ -80,7 +79,7 @@ export const getKanjiDefinitions = async (generatedKanjiObj) => {
         {
           method: "GET",
           headers: {
-            "X-RapidAPI-Key": process.env.RAPID_API_KEY,
+            "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY,
             "X-RapidAPI-Host": "kanjialive-api.p.rapidapi.com",
           },
         }

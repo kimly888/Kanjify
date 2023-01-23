@@ -11,12 +11,22 @@ const Name = ({
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const handleClick = async () => {
+    if (name.length > 0) {
+      setIsActive(true);
+    }
+  };
+
   const onSubmitForm = async (event) => {
     event.preventDefault();
     try {
       setIsLoading(true);
+      const translatedNameResponse = await fetch(
+        `api/translate/?input=${name}`
+      );
+      const translatedNameData = await translatedNameResponse.json();
       const response = await fetch(
-        `/api/kanji/?input=${name.replaceAll(" ", "")}`
+        `/api/kanji/?input=${translatedNameData.name}`
       );
       const data = await response.json();
       setIsLoading(false);
@@ -25,10 +35,6 @@ const Name = ({
       setErrorMessage("Unable to get your Kanji name...");
       setIsLoading(false);
     }
-  };
-
-  const handleClick = () => {
-    if (name.length > 0) setIsActive(true);
   };
 
   return (
