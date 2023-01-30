@@ -20,7 +20,6 @@
   align-items: center;
   gap: 2rem;
   /* scroll-snap-type: y mandatory; */
-  font-family: "Lora", serif;
 }
 
 .mainContainer::-webkit-scrollbar {

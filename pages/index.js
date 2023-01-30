@@ -5,9 +5,6 @@ import Head from "next/head";
 
 function App() {
   const [kanjiData, setKanjiData] = useState([]);
-  const [isActive, setIsActive] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSubmitted, setSubmit] = useState(false);
 
   return (
     <>
