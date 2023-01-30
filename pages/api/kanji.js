@@ -1,14 +1,4 @@
 const wanakana = require("wanakana");
-// import {
-//   katakanaToKanji,
-//   getKanjiDefinitions,
-//   combiner,
-//   getKanjiData,
-//   convertToBigKatakana,
-//   combineKatakanaNwithPrevLetter,
-//   combineHiraganaNwithPrevLetter,
-//   isKatakana,
-// } from "../../lib/utils";
 
 const shuffle = (arr) => {
   const cloneArray = [...arr];
