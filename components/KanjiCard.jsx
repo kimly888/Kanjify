@@ -3,13 +3,13 @@ import KanjiCharacter from "./KanjiCharacter";
 import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
 
 const KanjiCard = ({ kanjiName, eachKanjiData }) => {
-  const copyToClipboard = async () => {
-    await navigator.clipboard.writeText(kanjiName);
-    alert("Copied " + kanjiName + " !");
-  };
+  // const copyToClipboard = async () => {
+  //   await navigator.clipboard.writeText(kanjiName);
+  //   alert("Copied " + kanjiName + " !");
+  // };
 
   return (
-    <article className={styles.kanjiCard} onClick={copyToClipboard}>
+    <article className={styles.kanjiCard}>
       <div className={styles.kanjiName}>
         {eachKanjiData.map((kanji, index) => (
           <KanjiCharacter
