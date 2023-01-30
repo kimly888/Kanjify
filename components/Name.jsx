@@ -38,6 +38,7 @@ const Name = ({ setKanjiData }) => {
   return (
     <form
       className={styles.kanjiInput}
+      id="name"
       onSubmit={onSubmitForm}
       method="GET"
       style={{
