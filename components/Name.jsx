@@ -41,10 +41,6 @@ const Name = ({ setKanjiData }) => {
       id="name"
       onSubmit={onSubmitForm}
       method="GET"
-      style={{
-        marginBottom: isActive ? "10%" : "0",
-        transition: "all 1s",
-      }}
     >
       <input
         type="text"
@@ -58,6 +54,7 @@ const Name = ({ setKanjiData }) => {
       <button
         type="submit"
         className={styles.kanjifyButton}
+        aria-labelledby="Kanjify"
         onClick={handleClick}
         disabled={isLoading}
       >

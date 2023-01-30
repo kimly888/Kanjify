@@ -17,11 +17,9 @@ const Header = ({ setKanjiData }) => {
 
   return (
     <header
-      className={styles.hero}
-      style={{
-        width: isActive ? "50%" : "100%",
-        transition: "all 1s",
-      }}
+      className={`${isActive ? styles.heroHalved : styles.hero} ${
+        isActive ? styles.halfScreen : styles.fullScreen
+      }`}
     >
       <h1 className={styles.title}>Kanjify</h1>
 

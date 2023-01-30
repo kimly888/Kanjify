@@ -11,7 +11,8 @@
   font-size: 1.3rem;
 }
 
-.mainContainer {
+.mainContainer,
+.mainContainerOpen {
   position: relative;
   height: 100vh;
   overflow: auto;
@@ -33,4 +34,30 @@
 .mainContainer::-webkit-scrollbar-thumb {
   background-color: #ffc145;
   border-radius: 10px;
+}
+
+.halfScreen,
+.hidden {
+  transition: all 1s;
+}
+
+.halfScreen {
+  width: 50%;
+}
+
+.hidden {
+  width: 0;
+}
+
+@media (max-width: 1024px) {
+  .mainContainerHidden {
+    width: 0;
+    height: 0;
+  }
+
+  .mainContainerOpen {
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+  }
 }

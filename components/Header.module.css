@@ -1,17 +1,27 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap"); */
-
-.hero {
+.hero,
+.heroHalved {
   position: relative;
-  width: 50%;
   height: 100vh;
-  float: left;
-  font-size: 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   color: white;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.title,
+.caption {
+  animation: fadeIn 2s;
 }
 
 .title {
@@ -23,4 +33,41 @@
   margin-top: 2rem;
   font-size: 2rem;
   font-weight: 400;
+}
+
+.halfScreen,
+.fullScreen {
+  transition: all 1s;
+}
+
+.halfScreen {
+  width: 50%;
+}
+
+.fullScreen {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    height: 100vh;
+  }
+
+  .heroHalved {
+    height: 50vh;
+  }
+
+  .title {
+    margin-top: 1rem;
+    font-size: 4rem;
+    font-weight: 700;
+  }
+
+  .caption {
+    font-size: 1.5rem;
+  }
+
+  .halfScreen {
+    width: 100%;
+  }
 }

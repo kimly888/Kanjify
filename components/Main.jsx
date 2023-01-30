@@ -9,11 +9,9 @@ const Main = ({ kanjiData }) => {
 
   return (
     <section
-      className={styles.mainContainer}
-      style={{
-        width: isActive ? "50%" : "0",
-        transition: "width 1s",
-      }}
+      className={`${
+        isActive ? styles.mainContainerOpen : styles.mainContainerHidden
+      } ${isActive ? styles.halfScreen : styles.hidden}`}
     >
       {isLoading ? (
         <LoadingSpinner />
