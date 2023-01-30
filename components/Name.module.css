@@ -10,15 +10,11 @@
 }
 
 .name {
-  outline: none;
   border: none;
   padding: 1rem 0;
   border-radius: 10px 0 0 10px;
   text-align: center;
-}
-
-.name:focus {
-  outline: 0.1rem solid black;
+  font-family: "Lora";
 }
 
 .kanjifyButton {
