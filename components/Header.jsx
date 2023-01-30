@@ -1,14 +1,11 @@
 import styles from "./Header.module.css";
 import Name from "./Name";
 import { Fireworks } from "fireworks/lib/react";
+import { useStateContext } from "../context/StateContext";
 
-const Header = ({
-  isActive,
-  setIsActive,
-  isLoading,
-  setIsLoading,
-  setKanjiData,
-}) => {
+const Header = ({ setKanjiData }) => {
+  const { isActive } = useStateContext();
+
   let fxProps = {
     colors: ["#ffc95e", "#fe5f55", "#5b5f97"],
     calc: (props, i) => ({
@@ -27,17 +24,12 @@ const Header = ({
       }}
     >
       <h1 className={styles.title}>Kanjify</h1>
+
       <label className={styles.caption} htmlFor="name">
         Enter your name
       </label>
+      <Name setKanjiData={setKanjiData} />
 
-      <Name
-        isActive={isActive}
-        setIsActive={setIsActive}
-        setKanjiData={setKanjiData}
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
-      />
       {isActive && <Fireworks {...fxProps} />}
     </header>
   );

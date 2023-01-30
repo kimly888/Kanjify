@@ -1,9 +1,12 @@
 import KanjiCard from "./KanjiCard";
-import Options from "./Options";
+// import Options from "./Options";
 import LoadingSpinner from "./LoadingSpinner";
 import styles from "./Main.module.css";
+import { useStateContext } from "../context/StateContext";
 
-const Main = ({ isActive, kanjiData, isLoading, isSubmitted }) => {
+const Main = ({ kanjiData }) => {
+  const { isActive, isLoading } = useStateContext();
+
   return (
     <section
       className={styles.mainContainer}

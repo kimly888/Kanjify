@@ -20,20 +20,10 @@ function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <div className="app">
-        <Header
-          isActive={isActive}
-          setIsActive={setIsActive}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-          setKanjiData={setKanjiData}
-        />
-        <Main
-          isActive={isActive}
-          isLoading={isLoading}
-          kanjiData={kanjiData}
-          isSubmitted={isSubmitted}
-        />
+        <Header setKanjiData={setKanjiData} />
+        <Main kanjiData={kanjiData} />
       </div>
     </>
   );

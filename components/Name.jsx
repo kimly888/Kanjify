@@ -1,13 +1,9 @@
 import { useState } from "react";
 import styles from "./Name.module.css";
+import { useStateContext } from "../context/StateContext";
 
-const Name = ({
-  isActive,
-  setIsActive,
-  isLoading,
-  setIsLoading,
-  setKanjiData,
-}) => {
+const Name = ({ setKanjiData }) => {
+  const { isActive, setIsActive, isLoading, setIsLoading } = useStateContext();
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
