@@ -51,6 +51,8 @@ const Name = ({ setKanjiData }) => {
         name="name"
         className={styles.name}
         onChange={(event) => setName(event.target.value)}
+        aria-labelledby="name"
+        aria-required="true"
         required
       />
       <button
