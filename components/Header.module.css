@@ -49,6 +49,10 @@
 }
 
 @media only screen and (max-width: 1024px) {
+  .hero,
+  .heroHalved {
+    gap: 0rem;
+  }
   .hero {
     height: 100vh;
   }

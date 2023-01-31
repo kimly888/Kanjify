@@ -42,35 +42,16 @@
   background-color: #bc2263;
 }
 
-@media (max-width: 673px) {
+@media only screen and (max-width: 1024px) {
   .kanjiInput {
     display: flex;
-    flex-direction: column;
-    box-shadow: none;
+    flex-direction: row;
+    justify-content: center;
+    width: 70%;
   }
 
   .name,
   .kanjifyButton {
     font-size: 1.5rem;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-
-  .name {
-    margin: 1rem 0;
-  }
-
-  .kanjifyButton {
-    margin: 1rem 0 0 0;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .name {
-    margin: 1rem 0;
-  }
-
-  .kanjifyButton {
-    margin: 1rem 0 0 0;
   }
 }
