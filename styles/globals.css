@@ -142,6 +142,7 @@ table {
 
 @media only screen and (max-width: 1024px) {
   .app {
+    height: 120%;
     background-size: auto 120%;
     flex-direction: column;
   }
