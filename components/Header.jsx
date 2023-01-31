@@ -10,7 +10,7 @@ const Header = ({ setKanjiData }) => {
     colors: ["#ffc95e", "#fe5f55", "#5b5f97"],
     calc: (props, i) => ({
       ...props,
-      x: (i + 1) * (window.innerWidth / 2) - (i + 1) * 100,
+      x: (i + 1) * (window.innerWidth / 2) - (i + 1),
       y: 200 + Math.random() * 100 - 50 + (i === 2 ? -10 : 0),
     }),
   };
