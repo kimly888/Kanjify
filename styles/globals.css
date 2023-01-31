@@ -130,6 +130,10 @@ table {
   border-spacing: 0;
 }
 
+html {
+  background-color: #011320;
+}
+
 .app {
   position: absolute;
   display: flex;
