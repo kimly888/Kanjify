@@ -57,7 +57,16 @@
 
   .mainContainerOpen {
     width: 100vw;
-    height: 50vh;
+    height: 100%;
     display: flex;
+  }
+
+  .kanji {
+    font-size: 1.6rem;
+  }
+
+  .furigana,
+  .romaji {
+    font-size: 1rem;
   }
 }
