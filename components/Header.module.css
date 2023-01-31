@@ -48,7 +48,7 @@
   width: 100%;
 }
 
-@media (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
   .hero {
     height: 100vh;
   }

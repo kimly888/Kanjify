@@ -140,7 +140,7 @@ table {
   background-size: cover;
 }
 
-@media (max-width: 1024px) {
+@media only screen and (max-width: 1024px) {
   .app {
     background-size: auto 120%;
     flex-direction: column;
