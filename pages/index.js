@@ -12,9 +12,10 @@ function App() {
         <title>Kanjify</title>
         <meta
           name="description"
-          content="Introducing Kanjify! Easily convert your name into Japanese characters with just one click. Discover the meaning of your name in Japanese and impress your friends and family today!"
+          content="Introducing Kanjify! Easily convert your name into Japanese and discover its meaning with just one click. "
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
