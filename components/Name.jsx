@@ -6,7 +6,6 @@ const Name = ({ setKanjiData }) => {
   const { setIsActive, isLoading, setIsLoading } = useStateContext();
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const nameRef = useRef(null);
 
   const handleClick = async () => {
     if (name.length > 0) {
@@ -36,13 +35,6 @@ const Name = ({ setKanjiData }) => {
     }
   };
 
-  useEffect(() => {
-    nameRef.current.onfocus = () => {
-      window.scrollTo(0, 0);
-      document.body.scrollTop = 0;
-    };
-  });
-
   return (
     <form
       className={styles.kanjiInput}
@@ -53,7 +45,6 @@ const Name = ({ setKanjiData }) => {
       <input
         type="text"
         name="name"
-        ref={nameRef}
         className={styles.name}
         onChange={(event) => setName(event.target.value)}
         aria-labelledby="name"
