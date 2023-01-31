@@ -16,6 +16,11 @@ function App() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charset="UTF-8" />
+        <meta
+          name="keywords"
+          content="kanji name, name in Japanese, kanji character, Japanese character, kanji symbols, japanese writing"
+        />
+        <meta name="robots" content="all" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
