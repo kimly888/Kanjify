@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./Name.module.css";
 import { useStateContext } from "../context/StateContext";
 
