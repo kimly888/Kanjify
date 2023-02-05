@@ -1,6 +1,18 @@
 import styles from "./KanjiCard.module.css";
 import KanjiCharacter from "./KanjiCharacter";
 import KanjiCharacterDefinition from "./KanjiCharacterDefinition";
+import {
+  LineShareButton,
+  LineIcon,
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+} from "next-share";
 
 const KanjiCard = ({ kanjiName, eachKanjiData }) => {
   // const copyToClipboard = async () => {
@@ -29,6 +41,39 @@ const KanjiCard = ({ kanjiName, eachKanjiData }) => {
             key={index}
           />
         ))}
+      </div>
+
+      <div className={styles.shareButtons}>
+        <LineShareButton
+          url={"https://kanjify.vercel.app"}
+          title={`My name in Japanese is ${kanjiName}. Check out Kanjify to discover yours!`}
+        >
+          <LineIcon size={40} round />
+        </LineShareButton>
+        <FacebookShareButton
+          url={"https://kanjify.vercel.app"}
+          quote={`My name in Japanese is ${kanjiName}. Check out Kanjify to discover yours!`}
+          hashtag={"#kanjify"}
+        >
+          <FacebookIcon size={40} round />
+        </FacebookShareButton>
+        <TwitterShareButton
+          value={kanjiName}
+          url={"https://kanjify.vercel.app"}
+          title={`My name in Japanese is ${kanjiName}. Check out Kanjify to discover yours!`}
+        >
+          <TwitterIcon size={40} round />
+        </TwitterShareButton>
+        <WhatsappShareButton
+          url={"https://kanjify.vercel.app"}
+          title={`My name in Japanese is ${kanjiName}. Check out Kanjify to discover yours!`}
+          separator=":: "
+        >
+          <WhatsappIcon size={40} round />
+        </WhatsappShareButton>
+        <LinkedinShareButton url={"https://kanjify.vercel.app"}>
+          <LinkedinIcon size={40} round />
+        </LinkedinShareButton>
       </div>
     </article>
   );
