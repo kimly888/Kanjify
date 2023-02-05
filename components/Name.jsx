@@ -3,35 +3,34 @@ import styles from "./Name.module.css";
 import { useStateContext } from "../context/StateContext";
 
 const Name = ({ setKanjiData }) => {
-  const { setIsActive, isLoading, setIsLoading } = useStateContext();
+  const { setIsActive, isLoading, setIsLoading, setErrorMessage } =
+    useStateContext();
   const [name, setName] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleClick = async () => {
-    if (name.length > 0) {
-      setIsActive(true);
-    }
+  const fetchKanjiData = async () => {
+    const translatedNameResponse = await fetch(`api/translate/?input=${name}`);
+    const translatedNameData = await translatedNameResponse.json();
+    const response = await fetch(
+      `/api/kanji/?input=${translatedNameData.name.replace(/[・ーッ]/g, "")}`
+    );
+    const data = await response.json();
+
+    return data;
   };
 
-  const onSubmitForm = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     try {
-      setIsLoading(true);
-      const translatedNameResponse = await fetch(
-        `api/translate/?input=${name}`
-      );
-      const translatedNameData = await translatedNameResponse.json();
-
-      const response = await fetch(
-        `/api/kanji/?input=${translatedNameData.name.replace(/[・ーッ]/g, "")}`
-      );
-      const data = await response.json();
-
-      setIsLoading(false);
-      setKanjiData(data);
+      if (name.length > 0) await setIsActive(true);
+      await setIsLoading(true);
+      const kanjiData = await fetchKanjiData();
+      await setIsLoading(false);
+      await setKanjiData(kanjiData);
     } catch (err) {
-      setErrorMessage("Unable to get your Kanji name...");
-      setIsLoading(false);
+      console.log(err);
+      await setIsLoading(false);
+      await setErrorMessage(err);
     }
   };
 
@@ -39,14 +38,14 @@ const Name = ({ setKanjiData }) => {
     <form
       className={styles.kanjiInput}
       id="name"
-      onSubmit={onSubmitForm}
+      onSubmit={handleSubmit}
       method="GET"
     >
       <input
         type="text"
         name="name"
         className={styles.name}
-        onChange={(event) => setName(event.target.value)}
+        onChange={(e) => setName(e.target.value)}
         aria-labelledby="name"
         aria-required="true"
         required
@@ -55,7 +54,6 @@ const Name = ({ setKanjiData }) => {
         type="submit"
         className={styles.kanjifyButton}
         aria-labelledby="Kanjify"
-        onClick={handleClick}
         disabled={isLoading}
       >
         🪄
