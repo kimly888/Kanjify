@@ -7,10 +7,13 @@ const Header = ({ setKanjiData }) => {
   const { isActive } = useStateContext();
 
   let fxProps = {
+    bubbleSpeedMaximum: 20,
+    canvasWidth: 1000,
+    canvasHeight: 1000,
     colors: ["#ffc95e", "#fe5f55", "#5b5f97"],
     calc: (props, i) => ({
       ...props,
-      x: (i + 1) * (window.innerWidth / 2) - (i + 1),
+      x: (i + 1) * (window.innerWidth / 2) - (i + 1) * 100,
       y: 200 + Math.random() * 100 - 50 + (i === 2 ? -10 : 0),
     }),
   };
