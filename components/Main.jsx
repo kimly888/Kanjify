@@ -5,7 +5,7 @@ import styles from "./Main.module.css";
 import { useStateContext } from "../context/StateContext";
 
 const Main = ({ kanjiData }) => {
-  const { isActive, isLoading } = useStateContext();
+  const { isActive, isLoading, errorMessage } = useStateContext();
 
   return (
     <section
@@ -15,7 +15,7 @@ const Main = ({ kanjiData }) => {
     >
       {isLoading ? (
         <LoadingSpinner />
-      ) : (
+      ) : kanjiData ? (
         kanjiData.map((name, index) => {
           return (
             <KanjiCard
@@ -25,6 +25,10 @@ const Main = ({ kanjiData }) => {
             />
           );
         })
+      ) : (
+        <>
+          <p className={styles.error}>{errorMessage}</p>
+        </>
       )}
 
       {/* {isLoading ? (
