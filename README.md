@@ -2,7 +2,7 @@
 
 ## About the project
 
-<img width="1280" alt="screenshot of Kanjify" src="https://user-images.githubusercontent.com/90857923/183323486-118d6e93-6000-4c69-9623-94d48353ec9b.png">
+<img width="1280" alt="screenshot of Kanjify" src="https://user-images.githubusercontent.com/62789620/216824470-15416a81-ba1a-49e8-950b-4fecdc3718ec.png">
 
 Ever wonder what your name would be in Japanese?
 Introducing Kanjify! Easily convert your name into Japanese and discover its meaning with just one click. Discover your Kanjified name today!
