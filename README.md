@@ -9,14 +9,14 @@ Introducing Kanjify! Easily convert your name into Japanese and discover its mea
 
 Try it out here: https://kanjify.vercel.app
 
-### Features
+## Features
 
 -   Generate up to 3 different ways that a user's name can be written and pronounced in Japanese
 -   User-friendly interface for easy input of names and display of Japanese names
 -   Backend built using Express and Node.js for efficient name generation and retrieval
 -   Built using modern web development technologies, including React and JavaScript
 
-### Developers
+## Developers
 
 - [Kurumi Muto](https://github.com/walnut07)
 - [Kim Ly](https://github.com/kimly888)
@@ -40,7 +40,7 @@ Try it out here: https://kanjify.vercel.app
 2.  Install dependencies using npm or yarn: `npm install` or `yarn install`
 3.  Start the development server using `npm start` or `yarn start`
 
-<-- Then, set up your local database.
+%%Then, set up your local database.
 Create a local Postgres database called 'kanjify'.
 
 ```SQL
@@ -60,12 +60,7 @@ DB_USER=YOUR PSQL USERNAME
 DB_PASSWORD=YOUR PSQL PASSWORD
 DB_NAME=kanjify
 ```
-
-After installation is complete, you should be able to run the app.
-
-```shell
-$ npm run start
-``` -->
+%%
 
 ## Logic Behind the Scenes
 
