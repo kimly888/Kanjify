@@ -40,7 +40,7 @@ Try it out here: https://kanjify.vercel.app
 2.  Install dependencies using npm or yarn: `npm install` or `yarn install`
 3.  Start the development server using `npm start` or `yarn start`
 
-<!-- Then, set up your local database.
+<-- Then, set up your local database.
 Create a local Postgres database called 'kanjify'.
 
 ```SQL
@@ -65,7 +65,7 @@ After installation is complete, you should be able to run the app.
 
 ```shell
 $ npm run start
-```
+``` -->
 
 ## Logic Behind the Scenes
 
