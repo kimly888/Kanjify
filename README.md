@@ -9,6 +9,13 @@ Introducing Kanjify! Easily convert your name into Japanese and discover its mea
 
 Try it out here: https://kanjify.vercel.app
 
+### Features
+
+-   Generate up to 3 different ways that a user's name can be written and pronounced in Japanese
+-   User-friendly interface for easy input of names and display of Japanese names
+-   Backend built using Express and Node.js for efficient name generation and retrieval
+-   Built using modern web development technologies, including React and JavaScript
+
 ### Developers
 
 - [Kurumi Muto](https://github.com/walnut07)
@@ -27,21 +34,11 @@ Try it out here: https://kanjify.vercel.app
   <!-- - [PostgresSQL](https://www.postgresql.org/) -->
 - [Vercel](https://www.vercel.com/)
 
-## Contributing
+## Installation and Usage
 
-Fork this repository, clone it to your computer, then install dependencies. Run:
-
-```shell
-$ npm i
-```
-
-<!-- - Express / Knex.js / Wanakana -->
-
-<!-- In `Kanjify/server`, run
-
-```shell
-$ npm install express knex wanakana
-``` -->
+1.  Clone the repository to your local machine.
+2.  Install dependencies using npm or yarn: `npm install` or `yarn install`
+3.  Start the development server using `npm start` or `yarn start`
 
 <!-- Then, set up your local database.
 Create a local Postgres database called 'kanjify'.
@@ -64,9 +61,6 @@ DB_PASSWORD=YOUR PSQL PASSWORD
 DB_NAME=kanjify
 ```
 
-After installing those libraries, you should be able to run the app.
-In `Kanjify/client` and `In Kanjify/server`, run -->
-
 After installation is complete, you should be able to run the app.
 
 ```shell
@@ -83,7 +77,20 @@ This map shows how frontend and backend communicate each other. It is not 100% a
 Please take a look at this slide if you want to know the persona, future features, or engineering challenges.
 https://docs.google.com/presentation/d/1T_csjN-K_JbxuHWR56iCB8ss_XQbSkXD7xOw_WlVTF4/edit?usp=sharing
 
+## Contributing
+
+Contributions to Kanjify are always welcome! To contribute, simply fork the repository, make your changes, and submit a pull request. Please ensure that your code is properly tested and documented before submitting a pull request.
+
+## License
+
+Kanjify is released under the MIT License. See the LICENSE file for details.
+
+
 ## Accreditation
 
 - Favicon and Logo are from the [Korean Wiki Project](https://www.koreanwikiproject.com/)
 - Background SVG generated using [Haikei](https://haikei.app/)
+
+## Contact
+
+If you have any questions or feedback about Kanjify, please contact us at [kimly.dev@gmail.com](mailto:kimly.dev@gmail.com).
